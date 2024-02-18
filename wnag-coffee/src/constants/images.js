@@ -5,12 +5,12 @@ import gallery01 from '../assets/gallery01.png';
 import gallery02 from '../assets/gallery02.png';
 import gallery03 from '../assets/gallery03.png';
 import gallery04 from '../assets/gallery04.png';
-import wangcoffee01 from '../assets/wangcoffee01.png';
-import wangcoffee02 from '../assets/wangcoffee02.png';
+import wangCoffee01 from '../assets/wangcoffee01.png';
+import wangCoffee02 from '../assets/wangcoffee02.png';
 import knife from '../assets/knife.png';
 import logo from '../assets/logo.png';
 import menu from '../assets/menu.png';
-import overlaybg from '../assets/overlaybg.png';
+import overLaybg from '../assets/overlaybg.png';
 import spoon from '../assets/spoon.svg';
 import welcome from '../assets/welcome.png';
 import findus from '../assets/findus.png';
@@ -31,12 +31,12 @@ export default {
   gallery02,
   gallery03,
   gallery04,
-  wangcoffee01,
-  wangcoffee02,
+  wangCoffee01,
+  wangCoffee02,
   knife,
   logo,
   menu,
-  overlaybg,
+  overLaybg,
   spoon,
   welcome,
   findus,

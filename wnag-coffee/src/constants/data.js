@@ -1,5 +1,13 @@
 import images from './images';
 
+const navItems = [
+  { href: "#home", title: "首頁" },
+  { href: "#about", title: "產地介紹" },
+  { href: "#menu", title: "菜單" },
+  { href: "#awards", title: "Awards" },
+  { href: "#contact", title: "Contact" }
+];
+
 const wines = [
   {
     title: 'Chapel Hill Shiraz',
@@ -79,4 +87,4 @@ const awards = [
   },
 ];
 
-export default { wines, cocktails, awards };
+export default { navItems, wines, cocktails, awards };
