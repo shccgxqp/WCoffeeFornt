@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdOutlineRestaurantMenu } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { data, images } from "../constants";
 
@@ -18,7 +18,7 @@ const Navbar = () => {
         {
           data.navItems.map((item, index) => (
             <li className="my-0 mx-4 cursor-pointer hover:text-grey" key={index}>
-              <Link to={item.href}>{item.title}</Link>
+              <NavLink to={item.href}>{item.title}</NavLink>
             </li>
           ))
         }
@@ -43,8 +43,8 @@ const Navbar = () => {
             <ul className="list-none">
               {
                 data.navItems.map((item, index) => (
-                  <li className="m-8 cursor-pointer text-black text-4xl align-center font-base hover:text-grey" key={index}>
-                    <Link to={item.href}>{item.title}</Link>
+                  <li className="m-8 cursor-pointer text-black text-4xl align-center font-base hover:text-grey" key={index} onClick={() => setToggleMenu(false)}>
+                    <NavLink to={item.href}>{item.title}</NavLink>
                   </li>
                 ))
               }
