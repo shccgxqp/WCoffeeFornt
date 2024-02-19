@@ -11,9 +11,6 @@ export default {
       base: ["Cormorant Upright", "serif"]
     },
     extend: {
-      backgroundImage: {
-        bg02: "url('./assets/bg02.jpg')",
-      },
       fontSize: {
         27: "27px",
       },

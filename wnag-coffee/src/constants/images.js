@@ -1,5 +1,4 @@
 import bg from '../assets/bg.png';
-import bg02 from '../assets/bg02.jpg';
 import chef from '../assets/chef.png';
 import G from '../assets/G.png';
 import gallery01 from '../assets/gallery01.png';
@@ -8,8 +7,6 @@ import gallery03 from '../assets/gallery03.png';
 import gallery04 from '../assets/gallery04.png';
 import wangCoffee01 from '../assets/wangcoffee01.png';
 import wangCoffee02 from '../assets/wangcoffee02.png';
-import coffee01 from '../assets/coffee01.jpg';
-import coffee02 from '../assets/coffee02.jpg';
 import knife from '../assets/knife.png';
 import logo from '../assets/logo.png';
 import menu from '../assets/menu.png';
@@ -28,7 +25,6 @@ import gericht from '../assets/gericht.png';
 
 export default {
   bg,
-  bg02,
   chef,
   G,
   gallery01,
@@ -37,8 +33,6 @@ export default {
   gallery04,
   wangCoffee01,
   wangCoffee02,
-  coffee01,
-  coffee02,
   knife,
   logo,
   menu,
