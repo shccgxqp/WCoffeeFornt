@@ -1,4 +1,4 @@
-import { Header } from "../container";
+import { Header } from '../container';
 
 const Home = () => {
   return (
@@ -6,5 +6,5 @@ const Home = () => {
       <Header />
     </>
   );
-}
-export default Home
+};
+export default Home;
