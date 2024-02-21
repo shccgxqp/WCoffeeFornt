@@ -1,43 +1,11 @@
-import images from './images';
-
 const navItems = [
-  { href: 'home', title: '首頁' },
-  { href: 'about', title: '產地介紹' },
-  { href: 'menu', title: '菜單' },
-  { href: 'awards', title: 'Awards' },
-  { href: 'contact', title: 'Contact' },
-  { href: 'Store', title: 'Store' },
+  { href: 'home', title: 'Home' },
+  { href: 'about', title: 'Coffee Origins' },
+  { href: 'menu', title: 'Menu' },
+  { href: 'store', title: 'Store' },
 ];
 
-const wines = [
-  {
-    title: 'Chapel Hill Shiraz',
-    price: '$56',
-    tags: 'AU | Bottle',
-  },
-  {
-    title: 'Catena Malbee',
-    price: '$59',
-    tags: 'AU | Bottle',
-  },
-  {
-    title: 'La Vieillw Rose',
-    price: '$44',
-    tags: 'FR | 750 ml',
-  },
-  {
-    title: 'Rhino Pale Ale',
-    price: '$31',
-    tags: 'CA | 750 ml',
-  },
-  {
-    title: 'Irish Guinness',
-    price: '$26',
-    tags: 'IE | 750 ml',
-  },
-];
-
-const cocktails = [
+const coffee = [
   {
     title: 'Aperol Sprtiz',
     price: '$20',
@@ -65,27 +33,5 @@ const cocktails = [
   },
 ];
 
-const awards = [
-  {
-    imgUrl: images.award02,
-    title: 'Bib Gourmond',
-    subtitle: 'Lorem ipsum dolor sit amet, consectetur.',
-  },
-  {
-    imgUrl: images.award01,
-    title: 'Rising Star',
-    subtitle: 'Lorem ipsum dolor sit amet, consectetur.',
-  },
-  {
-    imgUrl: images.award05,
-    title: 'AA Hospitality',
-    subtitle: 'Lorem ipsum dolor sit amet, consectetur.',
-  },
-  {
-    imgUrl: images.award03,
-    title: 'Outstanding Chef',
-    subtitle: 'Lorem ipsum dolor sit amet, consectetur.',
-  },
-];
 
-export default { navItems, wines, cocktails, awards };
+export default { navItems, coffee };
