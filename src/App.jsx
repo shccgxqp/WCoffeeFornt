@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 import {
   About,
@@ -28,6 +28,7 @@ const App = () => {
           <Route path='/store' element={<Store />} />
           <Route path='/login' element={<Login setLoggedIn={setLoggedIn} />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/api/*' element={<Navigate to='/' />} />
           <Route path='*' element={<NoMatch />} />
         </Route>
       </Routes>

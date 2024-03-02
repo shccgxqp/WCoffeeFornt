@@ -39,15 +39,13 @@ const Navbar = (props) => {
             <NavLink
               to='/home'
               className='mx-4 my-0 border-golden transition duration-500 ease-in-out hover:border-b'
-              onClick={() => setLoggedIn(false)}
-            >
+              onClick={() => setLoggedIn(false)}>
               Log Out
             </NavLink>
             <div className='h-8 w-px bg-gray text-crimson'>|</div>
             <NavLink
               to='/bookTable'
-              className='mx-4 my-0 border-golden transition duration-500 ease-in-out hover:border-b'
-            >
+              className='mx-4 my-0 border-golden transition duration-500 ease-in-out hover:border-b'>
               Book Table
             </NavLink>
           </>
@@ -55,8 +53,7 @@ const Navbar = (props) => {
           <>
             <NavLink
               to='/login'
-              className='mx-4 my-0 border-golden transition duration-500 ease-in-out hover:border-b'
-            >
+              className='mx-4 my-0 border-golden transition duration-500 ease-in-out hover:border-b'>
               Log In / Register
             </NavLink>
           </>
@@ -82,8 +79,7 @@ const Navbar = (props) => {
                 <li
                   className='align-center m-8 cursor-pointer font-base text-4xl text-black hover:text-grey'
                   key={index}
-                  onClick={() => setToggleMenu(false)}
-                >
+                  onClick={() => setToggleMenu(false)}>
                   <NavLink to={item.href}>{item.title}</NavLink>
                 </li>
               ))}
