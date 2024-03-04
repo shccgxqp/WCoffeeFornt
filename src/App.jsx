@@ -9,6 +9,7 @@ import {
   Register,
   Store,
   PurchasePage,
+  Cart,
 } from './pages';
 import { Layout } from './components';
 
@@ -26,6 +27,7 @@ const App = () => {
           <Route path='/menu' element={<Menu />} />
           <Route path='/store/:id' element={<PurchasePage />} />
           <Route path='/store' element={<Store />} />
+          <Route path='/cart' element={<Cart />} />
           <Route path='/login' element={<Login setLoggedIn={setLoggedIn} />} />
           <Route path='/register' element={<Register />} />
           <Route path='/api/*' element={<Navigate to='/' />} />

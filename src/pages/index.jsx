@@ -6,3 +6,4 @@ export { default as Store } from './Store';
 export { default as PurchasePage } from './PurchasePage';
 export { default as Login } from './User/Login';
 export { default as Register } from './User/Register';
+export { default as Cart } from './Cart';

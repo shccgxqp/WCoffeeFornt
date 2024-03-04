@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import { FaShoppingCart } from 'react-icons/fa';
 import { MdOutlineRestaurantMenu } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
 
@@ -59,33 +60,38 @@ const Navbar = (props) => {
           </>
         )}
       </div>
-
-      <div className='flex sm:hidden'>
-        <GiHamburgerMenu
-          color='#0c0c0c'
-          fontSize={27}
-          onClick={() => setToggleMenu(true)}
-        />
-
-        {toggleMenu && (
-          <div className='flex__center slide-bottom fixed left-0 top-0 z-20 h-screen w-full flex-col bg-crimson transition duration-500 ease-out'>
-            <MdOutlineRestaurantMenu
-              fontSize={27}
-              className='absolute right-5 top-5 cursor-pointer text-27 text-black'
-              onClick={() => setToggleMenu(false)}
-            />
-            <ul className='list-none'>
-              {data.navItems.map((item, index) => (
-                <li
-                  className='align-center m-8 cursor-pointer font-base text-4xl text-black hover:text-grey'
-                  key={index}
-                  onClick={() => setToggleMenu(false)}>
-                  <NavLink to={item.href}>{item.title}</NavLink>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+      <div className='flex items-center justify-end'>
+        <div className='flex sm:hidden'>
+          <GiHamburgerMenu
+            color='#0c0c0c'
+            fontSize={27}
+            onClick={() => setToggleMenu(true)}
+          />
+          {toggleMenu && (
+            <div className='flex__center slide-bottom fixed left-0 top-0 z-20 h-screen w-full flex-col bg-crimson transition duration-500 ease-out'>
+              <MdOutlineRestaurantMenu
+                fontSize={27}
+                className='absolute right-5 top-5 cursor-pointer text-27 text-black'
+                onClick={() => setToggleMenu(false)}
+              />
+              <ul className='list-none'>
+                {data.navItems.map((item, index) => (
+                  <li
+                    className='align-center m-8 cursor-pointer font-base text-4xl text-black hover:text-grey'
+                    key={index}
+                    onClick={() => setToggleMenu(false)}>
+                    <NavLink to={item.href}>{item.title}</NavLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+        <div className='mx-4'>
+          <NavLink to='/cart'>
+            <FaShoppingCart className='text-2xl text-black' />
+          </NavLink>
+        </div>
       </div>
     </nav>
   );

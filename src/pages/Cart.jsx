@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { setCookie, getCookie } from '../helpers/cookieHelpers';
 
-const Car = () => {
+const Cart = () => {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
@@ -57,4 +57,4 @@ const Car = () => {
   );
 };
 
-export default Car;
+export default Cart;
