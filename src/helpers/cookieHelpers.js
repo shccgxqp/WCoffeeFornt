@@ -19,3 +19,15 @@ export const getCookie = (name) => {
   }
   return null;
 };
+
+export const getTokenFromCookie = () => {
+  const cookies = document.cookie.split(';');
+  for (const cookie of cookies) {
+    const [name, value] = cookie.trim().split('=');
+    console.log(name, value);
+    if (name === 'token') {
+      return value;
+    }
+  }
+  return null;
+};

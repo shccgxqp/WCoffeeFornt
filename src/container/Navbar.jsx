@@ -11,9 +11,9 @@ const Navbar = (props) => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const { loggedIn, setLoggedIn } = props;
 
-  Navbar.propTypes = {
-    loggedIn: PropTypes.bool.isRequired,
-    setLoggedIn: PropTypes.func.isRequired,
+  const handleLogout = () => {
+    setLoggedIn(false);
+    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
   };
 
   return (
@@ -38,17 +38,17 @@ const Navbar = (props) => {
         {loggedIn ? (
           <>
             <NavLink
+              to='/User'
+              className='mx-4 my-0 border-golden transition duration-500 ease-in-out hover:border-b'>
+              MyPage
+            </NavLink>
+            <NavLink
               to='/home'
               className='mx-4 my-0 border-golden transition duration-500 ease-in-out hover:border-b'
-              onClick={() => setLoggedIn(false)}>
+              onClick={handleLogout}>
               Log Out
             </NavLink>
             <div className='h-8 w-px bg-gray text-crimson'>|</div>
-            <NavLink
-              to='/bookTable'
-              className='mx-4 my-0 border-golden transition duration-500 ease-in-out hover:border-b'>
-              Book Table
-            </NavLink>
           </>
         ) : (
           <>
@@ -95,6 +95,11 @@ const Navbar = (props) => {
       </div>
     </nav>
   );
+};
+
+Navbar.propTypes = {
+  loggedIn: PropTypes.bool.isRequired,
+  setLoggedIn: PropTypes.func.isRequired,
 };
 
 export default Navbar;

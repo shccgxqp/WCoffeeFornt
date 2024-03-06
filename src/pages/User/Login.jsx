@@ -2,44 +2,56 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const Login = (props) => {
+const Login = ({ setLoggedIn }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [connectError, setConnectError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-
-  Login.propTypes = {
-    setLoggedIn: PropTypes.func.isRequired,
-  };
-
   const navigate = useNavigate();
 
-  const onButtonClick = () => {
+  const onButtonClick = async () => {
     setEmailError('');
     setPasswordError('');
+    try {
+      if ('' === email) {
+        setEmailError('請輸入電子郵件');
+        return;
+      }
+      if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+        setEmailError('請輸入正確的電子郵件');
+        return;
+      }
+      if ('' === password) {
+        setPasswordError('請輸入密碼');
+        return;
+      }
+      if (password.length < 7) {
+        setPasswordError('密碼長度不足');
+        return;
+      }
+      const response = await fetch('http://localhost:3060/api/signin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+        credentials: 'include',
+        mode: 'cors',
+      });
 
-    // Check if the user has entered both fields correctly
-    if ('' === email) {
-      setEmailError('Please enter your email');
-      return;
-    }
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.message || 'Login failed.');
 
-    if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-      setEmailError('Please enter a valid email');
-      return;
+      setLoggedIn(true);
+      navigate('/');
+    } catch (error) {
+      console.error(error);
+      setConnectError(error.message || '登入失敗，請稍後重試。');
     }
-
-    if ('' === password) {
-      setPasswordError('Please enter a password');
-      return;
-    }
-
-    if (password.length < 7) {
-      setPasswordError('The password must be 8 characters or longer');
-      return;
-    }
-    props.setLoggedIn(true);
-    navigate('/');
   };
 
   return (
@@ -48,24 +60,26 @@ const Login = (props) => {
         <div>Login</div>
       </div>
       <br />
+      <div className='text-red-500'>{connectError}</div>
+      <br />
       <div className='items-start'>
         <input
           value={email}
-          placeholder='Enter your email here'
+          placeholder='請輸入電子郵件地址'
           onChange={(ev) => setEmail(ev.target.value)}
           className='font-4xl h-10 w-96 rounded-lg border-2 border-grey'
         />
-        <label className='text-red text-xs'>{emailError}</label>
+        <p className='text-xs text-red-500'>{emailError}</p>
       </div>
       <br />
       <div className='items-start'>
         <input
           value={password}
-          placeholder='Enter your password here'
+          placeholder='請輸入密碼'
           onChange={(ev) => setPassword(ev.target.value)}
           className='font-4xl h-10 w-96 rounded-lg border-2 border-grey'
         />
-        <label className='text-red text-xs'>{passwordError}</label>
+        <p className='text-xs text-red-500'>{passwordError}</p>
       </div>
       <br />
       <div className='items-start'>
@@ -79,4 +93,9 @@ const Login = (props) => {
     </div>
   );
 };
+
+Login.propTypes = {
+  setLoggedIn: PropTypes.func.isRequired,
+};
+
 export default Login;

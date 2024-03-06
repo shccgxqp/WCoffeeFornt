@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Navbar, ShoppingCartIcon } from '../components';
-import { Footer } from '../container';
+import { ShoppingCartIcon } from '../components';
+import { Footer, Navbar } from '../container';
 
 const Layout = (props) => {
   const { loggedIn, setLoggedIn } = props;
