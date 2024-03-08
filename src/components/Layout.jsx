@@ -1,15 +1,10 @@
 import { Outlet } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { ShoppingCartIcon } from '../components';
 import { Footer, Navbar } from '../container';
+import { useAuth } from '../container/useAuth';
 
-const Layout = (props) => {
-  const { loggedIn, setLoggedIn } = props;
-
-  Layout.propTypes = {
-    loggedIn: PropTypes.bool.isRequired,
-    setLoggedIn: PropTypes.func.isRequired,
-  };
+const Layout = () => {
+  const { loggedIn, setLoggedIn } = useAuth();
 
   return (
     <div>

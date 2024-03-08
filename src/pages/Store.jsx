@@ -64,7 +64,7 @@ const Store = () => {
 
       {{ currentPage } && (
         <Pagination
-          allProducts={totalCount}
+          allItems={totalCount}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
           postsPerPage={8}

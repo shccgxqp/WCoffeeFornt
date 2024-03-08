@@ -1,37 +1,39 @@
 import { useState } from 'react';
 
-import { UserDetails, Order, Shipment } from '../../pages';
+import { UserDetails, Order, OrderDetails } from '../../pages';
 const User = () => {
   const [status, setStatus] = useState('UserDetails');
-
-  const handleStatusChange = (newStatus) => {
-    setStatus(newStatus);
-  };
+  const [orderId, setOrderId] = useState('1');
+  const [OrderPage, setOrderPage] = useState(1);
 
   return (
     <>
-      <div className='mt-4 flex justify-center space-x-4'>
+      <div className='mx-20 mt-4 flex justify-center space-x-4 py-4'>
         <button
           className='btn focus:shadow-outline rounded bg-blue-500 px-4 py-2  text-white hover:bg-blue-600 focus:outline-none'
-          onClick={() => handleStatusChange('UserDetails')}>
+          onClick={() => setStatus('UserDetails')}>
           <span>User</span>
         </button>
         <button
           className='btn focus:shadow-outline rounded bg-green-500 px-4 py-2  text-white hover:bg-green-600 focus:outline-none'
-          onClick={() => handleStatusChange('Order')}>
+          onClick={() => setStatus('Order')}>
           <span>Order</span>
-        </button>
-        <button
-          className='btn focus:shadow-outline rounded bg-purple-500 px-4 py-2  text-white hover:bg-purple-600 focus:outline-none'
-          onClick={() => handleStatusChange('Shipment')}>
-          <span>Shipment</span>
         </button>
       </div>
 
-      <div className='mx-3 my-4 h-96 border'>
+      <div className='mx-20 mb-4 h-full '>
         {status === 'UserDetails' && <UserDetails />}
-        {status === 'Order' && <Order />}
-        {status === 'Shipment' && <Shipment />}
+        {status === 'Order' && (
+          <Order
+            setStatus={setStatus}
+            setOrderId={setOrderId}
+            OrderPage={OrderPage}
+            setOrderPage={setOrderPage}
+          />
+        )}
+        {status === 'OrderDetails' && (
+          <OrderDetails orderId={orderId} setStatus={setStatus} setOrderPage={setOrderPage} />
+        )}
       </div>
     </>
   );
