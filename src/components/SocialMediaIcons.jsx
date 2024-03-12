@@ -3,7 +3,7 @@ import { FaInstagram, FaFacebook, FaYoutube, FaTimes } from 'react-icons/fa';
 const SocialMediaIcons = () => {
   return (
     <div className='hidden items-center md:flex md:flex-col'>
-      <div className='fixed right-3 top-1/3 flex flex-col items-center rounded-lg bg-golden p-4 shadow-lg'>
+      <div className='fixed right-3 top-1/3 items-center rounded-lg bg-golden p-2 shadow-lg lg:p-4'>
         <div className='rotate-180 ' style={{ writingMode: 'vertical-rl' }}>
           FOLLOW US
         </div>

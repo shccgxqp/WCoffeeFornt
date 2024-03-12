@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,16 +14,7 @@ const Register = () => {
   const [errorNumber, setErrorNumber] = useState(0);
 
   function errorHandler(number) {
-    let errors = [
-      '',
-      'email',
-      'password',
-      'last_name',
-      'first_name',
-      'phone',
-      'country',
-      'birthday',
-    ];
+    let errors = ['', 'email', 'password', 'last_name', 'first_name', 'phone', 'country', 'birthday'];
     setErrorNumber(number);
     document.getElementById(errors[number]).focus();
   }
@@ -53,10 +45,7 @@ const Register = () => {
         errorHandler(6);
         return;
       }
-      if (
-        !/^\d{4}-\d{2}-\d{2}$/.test(birthday) ||
-        birthday >= new Date().toISOString().split('T')[0]
-      ) {
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(birthday) || birthday >= new Date().toISOString().split('T')[0]) {
         errorHandler(7);
         return;
       }
@@ -96,7 +85,12 @@ const Register = () => {
     <div className='flex h-full items-center justify-center'>
       <div className='flex w-full flex-col md:w-1/2'>
         <h1 className='mx-auto mb-4 mt-8 text-4xl font-bold'>Register</h1>
-        <h2 className='mx-auto  mb-8 mt-4 text-2xl'>會員註冊</h2>
+        <h2 className='mx-auto  mb-8 mt-4 text-2xl'>
+          會員註冊
+          <NavLink to={'/login'} className={'ml-4 text-blue-500 hover:underline'}>
+            back
+          </NavLink>
+        </h2>
         <div className='mb-4'>
           <label htmlFor='email' className='mb-1 block'>
             帳號(E-Mail)*
@@ -241,9 +235,7 @@ const Register = () => {
           />
           <p className='text-red-500'>{errorNumber === 7 ? '請輸入正確的生日' : ''}</p>
         </div>
-        <button
-          className='rounded-lg bg-crimson px-6 py-3 text-xl text-white'
-          onClick={onButtonClick}>
+        <button className='mb-4 rounded-lg bg-crimson px-6 py-3 text-xl text-white' onClick={onButtonClick}>
           Register
         </button>
       </div>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { useNavigate, NavLink } from 'react-router-dom';
-import { useAuth } from '../../container/useAuth';
+import { useNavigate, NavLink, useLocation } from 'react-router-dom';
+import { useAuth } from '../../contexts/useProvider';
+import { FacebookLoginButton, GoogleLoginButton } from 'react-social-login-buttons';
 
 const Login = () => {
   const { setLoggedIn } = useAuth();
@@ -10,6 +11,15 @@ const Login = () => {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const navigate = useNavigate();
+  const location = useLocation();
+  const { message } = location.state || { message: '' };
+
+  const facebookLogin = () => {
+    window.open('http://localhost:3060/api/login/facebook', '_self');
+  };
+  const googleLogin = () => {
+    window.open('http://localhost:3060/api/login/google', '_self');
+  };
 
   const onButtonClick = async () => {
     setEmailError('');
@@ -51,7 +61,10 @@ const Login = () => {
     <div className='flex h-full items-center justify-center md:h-[720px]'>
       <div className='flex w-full flex-col md:w-1/3'>
         <h1 className='mx-auto mb-4 mt-8 text-4xl font-bold'>Login</h1>
-        <div className='mt-4 text-red-500'>{connectError}</div>
+        <div className='mt-4 text-red-500'>
+          {connectError}
+          {message}
+        </div>
         <div className='mb-4'>
           <input
             value={email}
@@ -79,12 +92,18 @@ const Login = () => {
             onClick={onButtonClick}
             value='Log in'
           />
-          <p className='mt-8 text-sm'>
+          <p className='mt-2 text-sm'>
             還沒有帳號，請點擊
             <NavLink to='/register' className='text-blue-500'>
               註冊
             </NavLink>
           </p>
+          <hr className='border-gray-400 my-4 w-full border-t' />
+
+          <div className='flex w-full flex-row'>
+            <FacebookLoginButton onClick={facebookLogin} />
+            <GoogleLoginButton onClick={googleLogin} />
+          </div>
         </div>
       </div>
     </div>

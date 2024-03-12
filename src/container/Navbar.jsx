@@ -9,24 +9,27 @@ import { data, images } from '../constants';
 
 const Navbar = (props) => {
   const [toggleMenu, setToggleMenu] = useState(false);
-  const { loggedIn, setLoggedIn } = props;
+  const { loggedIn, setLoggedIn, setIsAdmin } = props;
 
-  const handleLogout = () => {
+  const logOut = async () => {
+    const response = await fetch('http://localhost:3060/api/user/logout', {
+      credentials: 'include',
+      mode: 'cors',
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.message);
+    console.log(data.message);
     setLoggedIn(false);
-    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    setIsAdmin(false);
   };
 
   return (
-    <nav className='flex w-full items-center justify-between bg-crimson p-4 sm:px-8 sm:py-4'>
-      <div className='hidden items-center justify-start sm:flex'>
-        <img
-          className='w-110 xl:w-210 '
-          src={images.wangCoffee01}
-          alt='app logo'
-        />
+    <nav className='flex  items-center justify-between bg-crimson p-4 '>
+      <div className='hidden items-center justify-start lg:flex'>
+        <img className='w-110 xl:w-210 ' src={images.wangCoffee01} alt='app logo' />
       </div>
 
-      <ul className='hidden flex-1 list-none items-center justify-center lg:flex'>
+      <ul className='hidden flex-1 list-none items-center justify-start md:flex md:justify-center'>
         {data.navItems.map((item, index) => (
           <li className='mx-4 my-0 cursor-pointer hover:text-grey' key={index}>
             <NavLink to={item.href}>{item.title}</NavLink>
@@ -34,39 +37,29 @@ const Navbar = (props) => {
         ))}
       </ul>
 
-      <div className='flex w-60 items-center justify-end'>
+      <div className='flex'>
         {loggedIn ? (
           <>
-            <NavLink
-              to='/User'
-              className='mx-4 my-0 border-golden transition duration-500 ease-in-out hover:border-b'>
-              MyPage
+            <NavLink to='/User' className='mx-4 my-0 border-golden transition duration-500 ease-in-out hover:border-b'>
+              個人頁面
             </NavLink>
             <NavLink
               to='/home'
               className='mx-4 my-0 border-golden transition duration-500 ease-in-out hover:border-b'
-              onClick={handleLogout}>
-              Log Out
+              onClick={logOut}>
+              登出
             </NavLink>
-            <div className='h-8 w-px bg-gray text-crimson'>|</div>
           </>
         ) : (
           <>
-            <NavLink
-              to='/login'
-              className='mx-4 my-0 border-golden transition duration-500 ease-in-out hover:border-b'>
-              Log In / Register
+            <NavLink to='/login' className='mx-4 my-0 border-golden transition duration-500 ease-in-out hover:border-b'>
+              登入 / 註冊
             </NavLink>
           </>
         )}
-      </div>
-      <div className='flex items-center justify-end'>
-        <div className='flex sm:hidden'>
-          <GiHamburgerMenu
-            color='#0c0c0c'
-            fontSize={27}
-            onClick={() => setToggleMenu(true)}
-          />
+
+        <div className='flex md:hidden'>
+          <GiHamburgerMenu color='#0c0c0c' fontSize={27} onClick={() => setToggleMenu(true)} />
           {toggleMenu && (
             <div className='flex__center slide-bottom fixed left-0 top-0 z-20 h-screen w-full flex-col bg-crimson transition duration-500 ease-out'>
               <MdOutlineRestaurantMenu
@@ -100,6 +93,8 @@ const Navbar = (props) => {
 Navbar.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
   setLoggedIn: PropTypes.func.isRequired,
+  isAdmin: PropTypes.bool.isRequired,
+  setIsAdmin: PropTypes.func.isRequired,
 };
 
 export default Navbar;

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { setCookie, getCookie } from '../helpers/cookieHelpers';
 import { Popup } from '../components';
 import { MdShoppingCart } from 'react-icons/md';
-import { useAuth } from '../container/useAuth';
+import { useAuth } from '../contexts/useProvider';
 
 const Cart = () => {
   const { loggedIn } = useAuth();
@@ -15,11 +15,6 @@ const Cart = () => {
   const navigate = useNavigate();
 
   const postOrder = async () => {
-    if (!loggedIn) {
-      setShowPopup(false);
-      navigate('/login');
-      return;
-    }
     let productItems = getCookie('cart') || '[]';
     productItems = JSON.parse(productItems);
     productItems = productItems.map((item) => {
@@ -56,8 +51,12 @@ const Cart = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      if (!loggedIn) {
+        setShowPopup(false);
+        navigate('/login', { state: { message: '請先登錄才能訪問購物車' } });
+        return;
+      }
       const existingCart = JSON.parse(getCookie('cart') || '[]');
-
       try {
         const shipmentResponse = await fetch('http://localhost:3060/api/user/shipment', {
           headers: {

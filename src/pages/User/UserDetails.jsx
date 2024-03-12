@@ -32,12 +32,12 @@ const UserDetails = () => {
       ),
     },
     { label: 'Name:', value: `${data.data.last_name} ${data.data.first_name}` },
-    { label: 'Birthday:', value: data.data.birthday.split('T')[0] },
-    { label: '電子載具:', value: data.data.carrier_code },
-    { label: 'Email:', value: data.data.email },
-    { label: 'Phone:', value: data.data.phone },
-    { label: '國家:', value: data.data.country },
-    { label: '城市:', value: data.data.city },
+    { label: 'Birthday:', value: data.data.birthday ? data.data.birthday.split('T')[0] : '無' },
+    { label: '電子載具:', value: data.data.carrier_code ? data.data.carrier_code : '無' },
+    { label: 'Email:', value: data.data.email ? data.data.email : '無' },
+    { label: 'Phone:', value: data.data.phone ? data.data.phone : '無' },
+    { label: '國家:', value: data.data.country ? data.data.country : '無' },
+    { label: '城市:', value: data.data.city ? data.data.city : '無' },
   ];
 
   return (
@@ -49,9 +49,7 @@ const UserDetails = () => {
               formFields.map((field, index) => (
                 <div key={index}>
                   <label className='text-lg font-bold'>{field.label}</label>
-                  <div className='border-none bg-transparent text-lg focus:outline-none'>
-                    {field.value}
-                  </div>
+                  <div className='border-none bg-transparent text-lg focus:outline-none'>{field.value}</div>
                 </div>
               ))}
           </div>

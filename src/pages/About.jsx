@@ -1,4 +1,3 @@
-// import { useState, useEffect } from 'react';
 import { images } from '../constants';
 
 const About = () => {
@@ -60,9 +59,7 @@ const About = () => {
 
       <div className='mt-8 flex items-center justify-center'>
         <div className='w-3/5'>
-          <h2 className='mb-4 text-xl font-semibold'>
-            咖啡豆烘焙｜淺焙、中焙、重焙
-          </h2>
+          <h2 className='mb-4 text-xl font-semibold'>咖啡豆烘焙｜淺焙、中焙、重焙</h2>
           <p className='mb-4'>
             一般認為咖啡生豆決定咖啡八成的味道，而剩下的兩成由烘焙決定，豆子烘烤的時間，會影響外觀和味道。簡單來說，豆子烘焙時間越長會突顯苦味；而烘焙時間太短，酸味會比較突出。{' '}
           </p>
