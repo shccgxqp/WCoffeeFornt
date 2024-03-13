@@ -20,7 +20,17 @@ const navItems = [
   { href: 'store', title: '線上商店' },
 ];
 
-const shopCategories = [
+const userItems = [
+  {
+    id: '1',
+    name: '商品',
+    href: '',
+    icon: <IoMdContacts />,
+  },
+  { id: '2', name: '訂單', href: 'order', icon: <RiContactsLine /> },
+];
+
+const shopItems = [
   {
     id: '3',
     name: '咖啡豆',
@@ -181,4 +191,4 @@ export const vipDataImg = (strNumber) => {
   }
 };
 
-export default { navItems, vipData, vipDataImg, links, shopCategories };
+export default { navItems, vipData, vipDataImg, links, userItems, shopItems };

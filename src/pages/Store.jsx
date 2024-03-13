@@ -24,7 +24,6 @@ const Store = () => {
           return;
         } else {
           setResMessage('');
-          console.log(data.data.totalCount);
           setTotalCount(data.data.totalCount);
           setProducts(data.data.products);
         }

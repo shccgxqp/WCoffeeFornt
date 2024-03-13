@@ -1,6 +1,7 @@
 import { FiEdit } from 'react-icons/fi';
 import { FaCrown } from 'react-icons/fa';
 import { vipData, vipDataImg } from '../../helpers/translationHelpers';
+import { NavLink } from 'react-router-dom';
 import useSWR from 'swr';
 
 const UserDetails = () => {
@@ -11,6 +12,7 @@ const UserDetails = () => {
         'Content-Type': 'application/json',
       },
       credentials: 'include',
+      mode: 'cors',
     });
     const data = await response.json();
     if (!response.ok) throw new Error(data.message);
@@ -31,11 +33,11 @@ const UserDetails = () => {
         </>
       ),
     },
-    { label: 'Name:', value: `${data.data.last_name} ${data.data.first_name}` },
-    { label: 'Birthday:', value: data.data.birthday ? data.data.birthday.split('T')[0] : '無' },
+    { label: '名子:', value: `${data.data.last_name} ${data.data.first_name}` },
+    { label: '生日:', value: data.data.birthday ? data.data.birthday.split('T')[0] : '無' },
     { label: '電子載具:', value: data.data.carrier_code ? data.data.carrier_code : '無' },
-    { label: 'Email:', value: data.data.email ? data.data.email : '無' },
-    { label: 'Phone:', value: data.data.phone ? data.data.phone : '無' },
+    { label: '信箱:', value: data.data.email ? data.data.email : '無' },
+    { label: '電話:', value: data.data.phone ? data.data.phone : '無' },
     { label: '國家:', value: data.data.country ? data.data.country : '無' },
     { label: '城市:', value: data.data.city ? data.data.city : '無' },
   ];
@@ -64,9 +66,11 @@ const UserDetails = () => {
             </ul>
           </div>
           <div className='mt-4 flex justify-end'>
-            <button className='flex items-center rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600'>
+            <NavLink
+              to='/user/edit'
+              className='flex items-center rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600'>
               <FiEdit className='mr-1' /> Edit
-            </button>
+            </NavLink>
           </div>
         </div>
       )}

@@ -1,16 +1,7 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 const Register = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [password_check, setPassword_check] = useState('');
-  const [last_name, setLast_name] = useState('');
-  const [first_name, setFirst_name] = useState('');
-  const [phone, setPhone] = useState('');
-  const [country, setCountry] = useState('TW');
-  const [city, setCity] = useState('');
-  const [birthday, setBirthday] = useState('');
-  const [carrier_code, setCarrier_code] = useState('');
+  const [client, setClient] = useState({ country: 'TW' });
   const [errorNumber, setErrorNumber] = useState(0);
 
   function errorHandler(number) {
@@ -21,6 +12,7 @@ const Register = () => {
 
   const onButtonClick = async () => {
     try {
+      const { email, password, password_check, last_name, first_name, phone, country, birthday } = client;
       if ('' === email || !/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
         errorHandler(1, 'email');
         return;
@@ -56,16 +48,9 @@ const Register = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          email: email,
-          password: password,
-          password_check: password_check,
-          last_name: last_name,
-          first_name: first_name,
-          phone: phone,
-          country: country,
-          city: city || null,
-          birthday: birthday,
-          carrier_code: carrier_code || null,
+          ...client,
+          city: client.city || null,
+          carrier_code: client.carrier_code || null,
         }),
         credentials: 'include',
         mode: 'cors',
@@ -101,7 +86,7 @@ const Register = () => {
             placeholder='E-Mail'
             type='text'
             className='w-full border border-slate-200 p-4'
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setClient((prev) => ({ ...prev, email: e.target.value }))}
           />
           <p className='text-red-500'>{errorNumber === 1 ? '請輸入正確的電子郵件地址' : ''}</p>
         </div>
@@ -115,7 +100,7 @@ const Register = () => {
             placeholder='Password'
             type='password'
             className='w-full border border-slate-200 p-4'
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setClient((prev) => ({ ...prev, password: e.target.value }))}
           />
           <p className='text-red-500'>{errorNumber === 2 ? '密碼不符合請重新輸入' : ''}</p>
         </div>
@@ -129,7 +114,7 @@ const Register = () => {
             placeholder='Retype Password'
             type='password'
             className='w-full border border-slate-200 p-4'
-            onChange={(e) => setPassword_check(e.target.value)}
+            onChange={(e) => setClient((prev) => ({ ...prev, password_check: e.target.value }))}
           />
           <p className='text-red-500'>{errorNumber === 2 ? '密碼不符合請重新輸入' : ''}</p>
         </div>
@@ -144,7 +129,7 @@ const Register = () => {
               placeholder='Last Name'
               type='text'
               className='w-full border border-slate-200 p-4'
-              onChange={(e) => setLast_name(e.target.value)}
+              onChange={(e) => setClient((prev) => ({ ...prev, last_name: e.target.value }))}
             />
             <p className='text-red-500'>{errorNumber === 3 ? '請輸入正確的姓氏' : ''}</p>
           </div>
@@ -158,14 +143,14 @@ const Register = () => {
               placeholder='First Name'
               type='text'
               className='w-full border border-slate-200 p-4'
-              onChange={(e) => setFirst_name(e.target.value)}
+              onChange={(e) => setClient((prev) => ({ ...prev, first_name: e.target.value }))}
             />
             <p className='text-red-500'>{errorNumber === 4 ? '請輸入正確的名字' : ''}</p>
           </div>
         </div>
         <div className='mb-4'>
           <label htmlFor='mobile' className='mb-1 block'>
-            電話*
+            手機電話*
           </label>
           <div className='flex items-center'>
             <img src='' alt='' className='mr-2' />
@@ -175,7 +160,7 @@ const Register = () => {
               placeholder='09********'
               type='text'
               className='w-full border border-slate-200 p-4'
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={(e) => setClient((prev) => ({ ...prev, phone: e.target.value }))}
             />
             <p className='text-red-500'>{errorNumber === 5 ? '請輸入正確的手機號碼' : ''}</p>
           </div>
@@ -188,8 +173,8 @@ const Register = () => {
             name='country'
             id='country'
             className='w-full border border-slate-200 p-4'
-            value={country}
-            onChange={(e) => setCountry(e.target.value)}>
+            value={client.country}
+            onChange={(e) => setClient((prev) => ({ ...prev, country: e.target.value }))}>
             <option value='TW'>Taiwan</option>
             <option value='JP'>Japan</option>
             <option value='AS'>American Samoa</option>
@@ -206,7 +191,7 @@ const Register = () => {
             placeholder='City'
             type='text'
             className='w-full border border-slate-200 p-4'
-            onChange={(e) => setCity(e.target.value)}
+            onChange={(e) => setClient((prev) => ({ ...prev, city: e.target.value }))}
           />
         </div>
         <div className='mb-4'>
@@ -218,7 +203,7 @@ const Register = () => {
             name='birthday'
             type='date'
             className='w-full border border-slate-200 p-4'
-            onChange={(e) => setBirthday(e.target.value)}
+            onChange={(e) => setClient((prev) => ({ ...prev, birthday: e.target.value }))}
           />
           <p className='text-red-500'>{errorNumber === 7 ? '請輸入正確的生日' : ''}</p>
         </div>
@@ -231,11 +216,10 @@ const Register = () => {
             name='carrier_code'
             type='text'
             className='w-full border border-slate-200 p-4'
-            onChange={(e) => setCarrier_code(e.target.value)}
+            onChange={(e) => setClient((prev) => ({ ...prev, carrier_code: e.target.value }))}
           />
-          <p className='text-red-500'>{errorNumber === 7 ? '請輸入正確的生日' : ''}</p>
         </div>
-        <button className='mb-4 rounded-lg bg-crimson px-6 py-3 text-xl text-white' onClick={onButtonClick}>
+        <button className='mb-4 rounded-lg bg-crimson px-6 py-3 text-xl text-black' onClick={onButtonClick}>
           Register
         </button>
       </div>

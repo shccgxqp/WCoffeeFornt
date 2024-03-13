@@ -1,6 +1,20 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { About, Home, NoMatch, User, Login, Register, Store, PurchasePage, Cart } from './pages';
-import { Layout } from './components';
+import {
+  About,
+  Home,
+  NoMatch,
+  User,
+  Login,
+  Register,
+  Store,
+  Purchase,
+  Cart,
+  UserDetails,
+  UserDetailsEdit,
+  Order,
+  AuthLogin,
+} from './pages';
+import { Layout } from './pages';
 import AuthProvider from './contexts/AuthProvider';
 import ContextProvider from './contexts/ContextProvider';
 
@@ -14,12 +28,17 @@ const App = () => {
               <Route index element={<Home />} />
               <Route path='/home' element={<Home />} />
               <Route path='/about' element={<About />} />
-              <Route path='/store/:id' element={<PurchasePage />} />
+              <Route path='/store/:id' element={<Purchase />} />
               <Route path='/store' element={<Store />} />
               <Route path='/cart' element={<Cart />} />
-              <Route path='/user' element={<User />} />
+              <Route path='/user' element={<User />}>
+                <Route index element={<UserDetails />} />
+                <Route path='edit' element={<UserDetailsEdit />} />
+                <Route path='order' element={<Order />} />
+              </Route>
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
+              <Route path='/auth/login' element={<AuthLogin />} />
               <Route path='/api/*' element={<Navigate to='/' />} />
               <Route path='*' element={<NoMatch />} />
             </Route>

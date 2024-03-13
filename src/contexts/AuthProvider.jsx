@@ -19,10 +19,10 @@ const AuthProvider = ({ children }) => {
           mode: 'cors',
         });
         const data = await response.json();
-        console.log(data);
         if (!response.ok) throw new Error(data.message || 'Login failed.');
         setLoggedIn(data.data.isLogin);
         setIsAdmin(data.data.isAdmin || false);
+        console.log('loggedIn:', data.data.isLogin, 'isAdmin:', data.data.isAdmin);
       } catch (error) {
         console.log(error);
       }

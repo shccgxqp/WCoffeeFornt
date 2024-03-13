@@ -15,12 +15,17 @@ const Login = () => {
   const { message } = location.state || { message: '' };
 
   const facebookLogin = () => {
-    window.open('http://localhost:3060/api/login/facebook', '_self');
+    window.open('http://localhost:3060/api/auth/login/facebook', '_self');
   };
   const googleLogin = () => {
-    window.open('http://localhost:3060/api/login/google', '_self');
+    window.open('http://localhost:3060/api/auth/login/google', '_self');
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      onButtonClick();
+    }
+  };
   const onButtonClick = async () => {
     setEmailError('');
     setPasswordError('');
@@ -59,7 +64,7 @@ const Login = () => {
 
   return (
     <div className='flex h-full items-center justify-center md:h-[720px]'>
-      <div className='flex w-full flex-col md:w-1/3'>
+      <div className='flex w-full flex-col md:w-2/5'>
         <h1 className='mx-auto mb-4 mt-8 text-4xl font-bold'>Login</h1>
         <div className='mt-4 text-red-500'>
           {connectError}
@@ -80,6 +85,7 @@ const Login = () => {
             value={password}
             placeholder='請輸入密碼'
             onChange={(ev) => setPassword(ev.target.value)}
+            onKeyDown={handleKeyPress}
             className='w-full border border-slate-200 p-4'
           />
           <p className='text-xs text-red-500'>{passwordError}</p>
@@ -100,7 +106,7 @@ const Login = () => {
           </p>
           <hr className='border-gray-400 my-4 w-full border-t' />
 
-          <div className='flex w-full flex-row'>
+          <div className='flex flex-col items-center justify-center lg:flex-row'>
             <FacebookLoginButton onClick={facebookLogin} />
             <GoogleLoginButton onClick={googleLogin} />
           </div>
