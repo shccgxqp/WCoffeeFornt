@@ -13,6 +13,7 @@ import {
   UserDetailsEdit,
   Order,
   AuthLogin,
+  Shipment,
 } from './pages';
 import { Layout } from './pages';
 import AuthProvider from './contexts/AuthProvider';
@@ -35,6 +36,7 @@ const App = () => {
                 <Route index element={<UserDetails />} />
                 <Route path='edit' element={<UserDetailsEdit />} />
                 <Route path='order' element={<Order />} />
+                <Route path='shipment' element={<Shipment />} />
               </Route>
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />

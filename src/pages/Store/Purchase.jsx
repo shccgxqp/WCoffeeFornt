@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { ProductDetails } from '../components';
-import { getCookie, setCookie } from '../helpers/cookieHelpers';
+import { ProductDetails } from '../../components';
+import { getCookie, setCookie } from '../../helpers/cookieHelpers';
 
 const PurchasePage = () => {
   const { id } = useParams();
@@ -11,9 +11,7 @@ const PurchasePage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          `http://localhost:3060/api/products/${id}`,
-        );
+        const response = await fetch(`http://localhost:3060/api/products/${id}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -41,6 +39,7 @@ const PurchasePage = () => {
     const updatedCart = [...existingCart, cartItem];
     setCookie('cart', JSON.stringify(updatedCart), 1);
     console.log('Item added to cart:', cartItem);
+    window.location.href = '/store';
   };
 
   return (

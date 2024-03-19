@@ -7,19 +7,12 @@ const Layout = () => {
   const { loggedIn, setLoggedIn, isAdmin, setIsAdmin } = useAuth();
 
   return (
-    <div>
-      <Navbar
-        loggedIn={loggedIn}
-        setLoggedIn={setLoggedIn}
-        isAdmin={isAdmin}
-        setIsAdmin={setIsAdmin}
-      />
+    <>
+      <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} isAdmin={isAdmin} setIsAdmin={setIsAdmin} />
       <SocialMediaIcons />
-
       <Outlet />
-
       <Footer />
-    </div>
+    </>
   );
 };
 

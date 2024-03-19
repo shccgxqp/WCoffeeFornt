@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { setCookie, getCookie } from '../helpers/cookieHelpers';
-import { Popup } from '../components';
+import { setCookie, getCookie } from '../../helpers/cookieHelpers';
+import { Popup } from '../../components';
 import { MdShoppingCart } from 'react-icons/md';
-import { useAuth } from '../contexts/useProvider';
+import { useAuth } from '../../contexts/useProvider';
 
 const Cart = () => {
   const { loggedIn } = useAuth();
@@ -112,10 +112,7 @@ const Cart = () => {
           <div className='mt-4'>
             <p className='font-semibold'>Total Amount: ${totalAmount.toFixed(2)}</p>
           </div>
-          <select
-            name='shipment'
-            id='shipment'
-            onClick={(ev) => setCheckShipment(parseInt(ev.target.value))}>
+          <select name='shipment' id='shipment' onClick={(ev) => setCheckShipment(parseInt(ev.target.value))}>
             {shipment &&
               shipment.map((item) => (
                 <option key={item.id} value={item.id}>

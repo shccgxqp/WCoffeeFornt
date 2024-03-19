@@ -118,7 +118,7 @@ const Order = () => {
                     <button
                       className='focus:ring-gray-800 bg-gray-800 w-96 bg-red-500 py-5 text-base font-medium leading-4 text-white hover:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 md:w-full'
                       onClick={() => {}}>
-                      View Order Details
+                      View Order Details{' '}
                     </button>
                   </div>
                 </div>

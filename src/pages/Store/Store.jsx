@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
-import { Pagination, DropDownItem } from '../components';
+import { Pagination, DropDownItem } from '../../components';
 
 const Store = () => {
   const [products, setProducts] = useState([]);
