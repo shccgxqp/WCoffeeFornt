@@ -14,7 +14,7 @@ const Store = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3060/api/products/?page=${currentPage}&limit=8&categoryId=${currentCategoryId}`,
+          `${process.env.REACT_APP_API}/api/products/?page=${currentPage}&limit=8&categoryId=${currentCategoryId}`,
         );
         const data = await response.json();
         if (data.status === 'error') {

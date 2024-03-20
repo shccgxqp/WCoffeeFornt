@@ -21,7 +21,7 @@ const Cart = () => {
       return { id: parseInt(item.id), qty: parseInt(item.quantity) };
     });
     try {
-      const response = await fetch('http://localhost:3060/api/user/orders', {
+      const response = await fetch(`${process.env.REACT_APP_API}/api/user/orders`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

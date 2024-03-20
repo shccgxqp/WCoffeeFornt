@@ -11,7 +11,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkLogin = async () => {
       try {
-        const response = await fetch('http://localhost:3060/api/user/checkLogin', {
+        const response = await fetch(`${process.env.REACT_APP_API}/api/user/checkLogin`, {
           headers: {
             'Content-Type': 'application/json',
           },

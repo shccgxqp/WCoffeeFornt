@@ -23,7 +23,7 @@ const UserDetails = () => {
     return data;
   };
 
-  const { data, error } = useSWR('http://localhost:3060/api/user', fetcher);
+  const { data, error } = useSWR(`${process.env.REACT_APP_API}/api/user`, fetcher);
   if (error) return (window.location.href = '/login');
   if (!data) return <div className='mt-4 text-center'>loading...</div>;
 

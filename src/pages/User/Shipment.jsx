@@ -40,7 +40,7 @@ const Shipment = () => {
   ];
 
   useEffect(() => {
-    const url = `http://localhost:3060/api/user/shipment/${selectedId}`;
+    const url = `${process.env.REACT_APP_API}/api/user/shipment/${selectedId}`;
     if (selectedAdd === 'false') {
       fetch(url, {
         method: 'GET',

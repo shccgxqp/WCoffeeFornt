@@ -27,7 +27,7 @@ const UserDetailsEdit = () => {
   }, []);
 
   const onBtnUserEdit = () => {
-    fetch('http://localhost:3060/api/user/edit', {
+    fetch(`${process.env.REACT_APP_API}/api/user/edit`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

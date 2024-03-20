@@ -19,7 +19,7 @@ const Order = () => {
     return data;
   };
 
-  const { data, error } = useSWR(`http://localhost:3060/api/user/orders/?page=${orderPage}&limit=2`, fetcher);
+  const { data, error } = useSWR(`${process.env.REACT_APP_API}/api/user/orders/?page=${orderPage}&limit=2`, fetcher);
 
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;

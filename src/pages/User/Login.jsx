@@ -15,10 +15,10 @@ const Login = () => {
   const { message } = location.state || { message: '' };
 
   const facebookLogin = () => {
-    window.open('http://localhost:3060/api/auth/login/facebook', '_self');
+    window.open(`${process.env.REACT_APP_API}/api/auth/login/facebook`, '_self');
   };
   const googleLogin = () => {
-    window.open('http://localhost:3060/api/auth/login/google', '_self');
+    window.open(`${process.env.REACT_APP_API}/api/auth/login/google`, '_self');
   };
 
   const handleKeyPress = (event) => {
@@ -38,7 +38,7 @@ const Login = () => {
         setPasswordError('密碼輸入錯誤');
         return;
       }
-      const response = await fetch('http://localhost:3060/api/signin', {
+      const response = await fetch(`${process.env.REACT_APP_API}/api/signin`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

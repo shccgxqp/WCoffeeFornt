@@ -12,7 +12,7 @@ const Navbar = (props) => {
   const { loggedIn, setLoggedIn, setIsAdmin } = props;
 
   const logOut = async () => {
-    const response = await fetch('http://localhost:3060/api/user/logout', {
+    const response = await fetch(`${process.env.REACT_APP_API}/api/user/logout`, {
       credentials: 'include',
       mode: 'cors',
     });

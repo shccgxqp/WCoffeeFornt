@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 const AuthLogin = () => {
   useEffect(() => {
     async function AuthLoginCheck() {
-      const response = await fetch('http://localhost:3060/api/auth/checkLogin', {
+      const response = await fetch(`${process.env.REACT_APP_API}/api/auth/checkLogin`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

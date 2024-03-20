@@ -16,7 +16,7 @@ const OrderDetails = ({ orderId, setStatus }) => {
     return data;
   };
 
-  const { data, error } = useSWR(`http://localhost:3060/api/user/orders/${id}`, fetcher);
+  const { data, error } = useSWR(`${process.env.REACT_APP_API}/api/user/orders/${id}`, fetcher);
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
   let orderItems = data.data[0];
@@ -42,17 +42,11 @@ const OrderDetails = ({ orderId, setStatus }) => {
                 key={index}
                 className='mt-4 flex w-full flex-col items-start justify-start md:mt-6 md:flex-row md:items-center md:space-x-6 xl:space-x-8'>
                 <div className='w-full pb-4 md:w-40 md:pb-8 '>
-                  <img
-                    className='w-full '
-                    src={`http://localhost:3060/images/${item.image}.jpg`}
-                    alt='dress'
-                  />
+                  <img className='w-full ' src={`http://localhost:3060/images/${item.image}.jpg`} alt='dress' />
                 </div>
                 <div className='border-gray-200 flex w-full flex-col items-start justify-between space-y-4 border-b pb-8 md:flex-row md:space-y-0'>
                   <div className='flex w-full flex-col items-start justify-start space-y-8'>
-                    <h3 className='text-gray-800 text-xl font-semibold leading-6 xl:text-2xl '>
-                      {item.name}
-                    </h3>
+                    <h3 className='text-gray-800 text-xl font-semibold leading-6 xl:text-2xl '>{item.name}</h3>
                     <div className='flex flex-col items-start justify-start space-y-2'>
                       <p className='text-gray-800 text-sm leading-none '>
                         <span className='dark:text-gray-400 text-gray-300'>weight: </span>
@@ -88,9 +82,7 @@ const OrderDetails = ({ orderId, setStatus }) => {
                   <div className='flex w-full items-center justify-between'>
                     <p className='text-gray-800 text-base leading-4'>
                       Discount{' '}
-                      <span className='bg-gray-200  text-gray-800 p-1 text-xs font-medium leading-3 '>
-                        STUDENT
-                      </span>
+                      <span className='bg-gray-200  text-gray-800 p-1 text-xs font-medium leading-3 '>STUDENT</span>
                     </p>
                     <p className='text-gray-600 text-base leading-4'>-$0.00 (0%)</p>
                   </div>
@@ -103,9 +95,7 @@ const OrderDetails = ({ orderId, setStatus }) => {
                 </div>
                 <div className='flex w-full items-center justify-between'>
                   <p className='text-gray-800 text-base font-semibold leading-4 '>Total</p>
-                  <p className=' text-gray-600 text-base font-semibold leading-4'>
-                    ${orderItems.total}
-                  </p>
+                  <p className=' text-gray-600 text-base font-semibold leading-4'>${orderItems.total}</p>
                 </div>
               </div>
             </div>
