@@ -47,7 +47,7 @@ const Store = () => {
                 <div className='flex h-56 w-full items-end justify-end '>
                   <img
                     className='h-full w-full object-cover'
-                    src={`http://localhost:3060/images/${item.image}.jpg`}
+                    src={`${process.env.REACT_APP_API}/images/${item.image}.jpg`}
                     alt={item.name}
                   />
                   <Link
