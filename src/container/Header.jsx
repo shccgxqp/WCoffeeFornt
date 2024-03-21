@@ -13,6 +13,7 @@ const Header = () => {
         <h1 className='lineHeight-110 font-base text-6xl uppercase tracking-wide text-golden '>匠人烘培，一生懸命</h1>
         <p className='font-alt mx-0 my-8 text-sm font-normal capitalize leading-7 tracking-wide text-black md:text-lg xl:text-2xl '>
           請坐下，讓我們分享咖啡的故事。咖啡豆的香氣，讓人心情愉悅。與朋友分享一杯咖啡，是生活中美好的時刻。
+          {process.env.REACT_APP_TEST}
         </p>
         <button type='button' className='rounded bg-crimson px-6 py-2 font-base text-base font-semibold text-black'>
           Explore Menu

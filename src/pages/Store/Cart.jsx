@@ -43,7 +43,7 @@ const Cart = () => {
       setCookie('cart', JSON.stringify([]), 1);
       setShowPopup(false);
 
-      navigate('/user');
+      navigate(`/payment/${data.data.order.id}`);
     } catch (error) {
       console.error('Error:', error);
     }
@@ -58,7 +58,7 @@ const Cart = () => {
       }
       const existingCart = JSON.parse(getCookie('cart') || '[]');
       try {
-        const shipmentResponse = await fetch('http://localhost:3060/api/user/shipment', {
+        const shipmentResponse = await fetch(`${process.env.REACT_APP_API}/api/user/shipment`, {
           headers: {
             'Content-Type': 'application/json',
           },

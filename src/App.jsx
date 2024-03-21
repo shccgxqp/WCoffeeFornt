@@ -14,6 +14,8 @@ import {
   Order,
   AuthLogin,
   Shipment,
+  Payment,
+  OrderCheck,
 } from './pages';
 import { Layout } from './pages';
 import AuthProvider from './contexts/AuthProvider';
@@ -32,10 +34,12 @@ const App = () => {
               <Route path='/store/:id' element={<Purchase />} />
               <Route path='/store' element={<Store />} />
               <Route path='/cart' element={<Cart />} />
+              <Route path='/payment/:orderId' element={<Payment />} />
               <Route path='/user' element={<User />}>
                 <Route index element={<UserDetails />} />
                 <Route path='edit' element={<UserDetailsEdit />} />
                 <Route path='order' element={<Order />} />
+                <Route path='order/check/:Status' element={<OrderCheck />} />
                 <Route path='shipment' element={<Shipment />} />
               </Route>
               <Route path='/login' element={<Login />} />

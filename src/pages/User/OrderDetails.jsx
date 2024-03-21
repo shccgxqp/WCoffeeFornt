@@ -42,7 +42,7 @@ const OrderDetails = ({ orderId, setStatus }) => {
                 key={index}
                 className='mt-4 flex w-full flex-col items-start justify-start md:mt-6 md:flex-row md:items-center md:space-x-6 xl:space-x-8'>
                 <div className='w-full pb-4 md:w-40 md:pb-8 '>
-                  <img className='w-full ' src={`http://localhost:3060/images/${item.image}.jpg`} alt='dress' />
+                  <img className='w-full ' src={`${process.env.REACT_APP_API}/images/${item.image}.jpg`} alt='dress' />
                 </div>
                 <div className='border-gray-200 flex w-full flex-col items-start justify-between space-y-4 border-b pb-8 md:flex-row md:space-y-0'>
                   <div className='flex w-full flex-col items-start justify-start space-y-8'>
