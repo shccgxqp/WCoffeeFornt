@@ -41,7 +41,7 @@ const Navbar = (props) => {
         {loggedIn ? (
           <>
             <NavLink to='/User' className='mx-4 my-0 border-golden transition duration-500 ease-in-out hover:border-b'>
-              個人頁面
+              會員專區
             </NavLink>
             <NavLink
               to='/home'

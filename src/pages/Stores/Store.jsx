@@ -51,7 +51,7 @@ const Store = () => {
                     alt={item.name}
                   />
                   <Link
-                    to={`/store/${item.id}`}
+                    to={`/store/Purchase/${item.id}`}
                     className='mx-5 -mb-4 rounded-full bg-blue-600 p-2 text-white hover:bg-blue-500 focus:bg-blue-500 focus:outline-none'>
                     <FaShoppingCart />
                   </Link>

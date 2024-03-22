@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { ProductDetails } from '../../components';
 import { getCookie, setCookie } from '../../helpers/cookieHelpers';
 
-const PurchasePage = () => {
+const StorePurchase = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [resMessage, setResMessage] = useState('');
@@ -85,4 +85,4 @@ const PurchasePage = () => {
   );
 };
 
-export default PurchasePage;
+export default StorePurchase;

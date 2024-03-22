@@ -22,7 +22,6 @@ const AuthProvider = ({ children }) => {
         if (!response.ok) throw new Error(data.message || 'Login failed.');
         setLoggedIn(data.data.isLogin);
         setIsAdmin(data.data.isAdmin || false);
-        console.log('loggedIn:', data.data.isLogin, 'isAdmin:', data.data.isAdmin);
       } catch (error) {
         console.log(error);
       }

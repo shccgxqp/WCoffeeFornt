@@ -1,8 +1,8 @@
-import { PropTypes } from 'prop-types';
+import { useParams } from 'react-router-dom';
 import useSWR from 'swr';
 
-const OrderDetails = ({ orderId, setStatus }) => {
-  const id = orderId;
+const OrderDetails = () => {
+  const { id } = useParams();
   const fetcher = async (url) => {
     const response = await fetch(url, {
       method: 'GET',
@@ -28,7 +28,7 @@ const OrderDetails = ({ orderId, setStatus }) => {
           <div className='item-start flex flex-col justify-start space-y-2 '>
             <h1 className='text-gray-800 text-3xl font-semibold leading-7 lg:text-4xl lg:leading-9 dark:text-white'>
               Order # {orderItems.id}
-              <button className='ml-8 text-blue-500' onClick={() => setStatus('Order')}>
+              <button className='ml-8 text-blue-500' onClick={() => window.history.back()}>
                 back
               </button>
             </h1>
@@ -104,11 +104,6 @@ const OrderDetails = ({ orderId, setStatus }) => {
       )}
     </div>
   );
-};
-
-OrderDetails.propTypes = {
-  orderId: PropTypes.string.isRequired,
-  setStatus: PropTypes.func,
 };
 
 export default OrderDetails;

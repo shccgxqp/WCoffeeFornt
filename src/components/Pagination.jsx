@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types'; // Import PropTypes
-
-const Pagination = ({ allItems, postsPerPage, setCurrentPage, currentPage }) => {
+import { NavLink } from 'react-router-dom';
+const Pagination = ({ allItems, postsPerPage, currentPage }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
@@ -22,36 +22,26 @@ const Pagination = ({ allItems, postsPerPage, setCurrentPage, currentPage }) => 
 
   return (
     <div className='pagination my-4 flex items-center justify-center'>
-      <button
-        className='mr-2 h-10 w-10 rounded-md border border-white bg-golden text-white outline-none'
-        onClick={() =>
-          setCurrentPage((prev) => {
-            if (prev === 1) return prev;
-            return prev - 1;
-          })
-        }>
+      <NavLink
+        className='flex h-10 w-10 items-center justify-center rounded-md border border-white bg-golden text-white'
+        to={`/user/order/?page=${() => (currentPage === 1 ? 1 : currentPage - 1)}`}>
         {'<'}
-      </button>
+      </NavLink>
       {displayPages.map((page, index) => (
-        <button
+        <NavLink
           key={index}
           className={`h-10 w-10 rounded-md border border-white ${
-            currentPage === page ? 'bg-white text-golden' : 'bg-golden text-white'
-          } mr-2 outline-none`}
-          onClick={() => setCurrentPage(page)}>
+            currentPage === page ? 'bg-while text-golden' : 'bg-golden text-white '
+          } flex items-center justify-center`}
+          to={`/user/order/?page=${page}`}>
           {page}
-        </button>
+        </NavLink>
       ))}
-      <button
-        className='h-10 w-10 rounded-md border border-white bg-golden text-white outline-none'
-        onClick={() =>
-          setCurrentPage((prev) => {
-            if (prev === pages.length) return prev;
-            return prev + 1;
-          })
-        }>
+      <NavLink
+        className='flex h-10 w-10 items-center justify-center rounded-md border border-white bg-golden text-white'
+        to={`user/order/?page=${() => (currentPage === pages.length ? pages.length : currentPage + 1)}`}>
         {'>'}
-      </button>
+      </NavLink>
     </div>
   );
 };
@@ -59,7 +49,6 @@ const Pagination = ({ allItems, postsPerPage, setCurrentPage, currentPage }) => 
 Pagination.propTypes = {
   allItems: PropTypes.number.isRequired,
   postsPerPage: PropTypes.number.isRequired,
-  setCurrentPage: PropTypes.func.isRequired,
   currentPage: PropTypes.number.isRequired,
 };
 

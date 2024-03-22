@@ -1,10 +1,12 @@
-import { useState } from 'react';
 import useSWR from 'swr';
+import { NavLink, useSearchParams } from 'react-router-dom';
 import { SiHackthebox } from 'react-icons/si';
 import { Pagination } from '../../components';
 
 const Order = () => {
-  const [orderPage, setOrderPage] = useState(1);
+  const [searchParams] = useSearchParams();
+  const page = searchParams.get('page') || '1';
+
   const fetcher = async (url) => {
     const response = await fetch(url, {
       method: 'GET',
@@ -18,11 +20,10 @@ const Order = () => {
     if (!response.ok) throw new Error(data.message);
     return data;
   };
-
-  const { data, error } = useSWR(`${process.env.REACT_APP_API}/api/user/orders/?page=${orderPage}&limit=2`, fetcher);
-
+  const { data, error } = useSWR(`${process.env.REACT_APP_API}/api/user/orders/?page=${page}&limit=2`, fetcher);
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
+
   return (
     <div className='px-4 py-14 2xl:container md:px-6 2xl:mx-auto 2xl:px-20'>
       {data.data.orders &&
@@ -125,23 +126,18 @@ const Order = () => {
                     </div>
                   </div>
                   <div className='flex w-full items-center justify-center'>
-                    <button
-                      className='focus:ring-gray-800 bg-gray-800 w-96 bg-red-500 py-5 text-base font-medium leading-4 text-white hover:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 md:w-full'
-                      onClick={() => {}}>
+                    <NavLink
+                      className='focus:ring-gray-800 w-96 bg-red-500 py-5 text-center text-base font-medium leading-4 text-white hover:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 md:w-full'
+                      to={`/user/order/details/${order.id}`}>
                       View Order Details{' '}
-                    </button>
+                    </NavLink>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         ))}
-      <Pagination
-        allItems={data.data.totalCount}
-        postsPerPage={2}
-        setCurrentPage={setOrderPage}
-        currentPage={orderPage}
-      />
+      <Pagination allItems={data.data.totalCount} postsPerPage={2} currentPage={parseInt(page)} />
     </div>
   );
 };

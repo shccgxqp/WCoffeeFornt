@@ -7,15 +7,16 @@ import {
   Login,
   Register,
   Store,
-  Purchase,
+  StorePurchase,
   Cart,
   UserDetails,
   UserDetailsEdit,
-  Order,
   AuthLogin,
   Shipment,
   Payment,
-  OrderCheck,
+  Order,
+  OrderDetails,
+  OrderResult,
 } from './pages';
 import { Layout } from './pages';
 import AuthProvider from './contexts/AuthProvider';
@@ -31,15 +32,16 @@ const App = () => {
               <Route index element={<Home />} />
               <Route path='/home' element={<Home />} />
               <Route path='/about' element={<About />} />
-              <Route path='/store/:id' element={<Purchase />} />
               <Route path='/store' element={<Store />} />
+              <Route path='/store/Purchase/:id' element={<StorePurchase />} />
               <Route path='/cart' element={<Cart />} />
               <Route path='/payment/:orderId' element={<Payment />} />
               <Route path='/user' element={<User />}>
                 <Route index element={<UserDetails />} />
                 <Route path='edit' element={<UserDetailsEdit />} />
                 <Route path='order' element={<Order />} />
-                <Route path='order/check/:Status' element={<OrderCheck />} />
+                <Route path='order/details/:id' element={<OrderDetails />} />
+                <Route path='order/result/:id' element={<OrderResult />} />
                 <Route path='shipment' element={<Shipment />} />
               </Route>
               <Route path='/login' element={<Login />} />

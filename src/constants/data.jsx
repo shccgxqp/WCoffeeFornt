@@ -23,11 +23,11 @@ const navItems = [
 const userItems = [
   {
     id: '1',
-    name: '商品',
+    name: '個人資料',
     href: '',
     icon: <IoMdContacts />,
   },
-  { id: '2', name: '訂單', href: 'order', icon: <RiContactsLine /> },
+  { id: '2', name: '訂單', href: 'order/?page=1', icon: <RiContactsLine /> },
 ];
 
 const shopItems = [
