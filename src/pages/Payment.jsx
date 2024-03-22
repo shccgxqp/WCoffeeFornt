@@ -35,17 +35,18 @@ const Payment = () => {
         <h3>訂單號碼 : {tradeInfo.MerchantOrderNo}</h3>
 
         <form name='Spgateway' className='flex flex-col' action={tradeInfo.PayGateWay} method='post'>
-          <input type='hidden' name='MerchantID' value={tradeInfo.MerchantID} placeholder='MerchantID' />
-          <input type='hidden' name='TradeInfo' value={tradeInfo.TradeInfo} placeholder='TradeInfo' />
-          <input type='hidden' name='TradeSha' value={tradeInfo.TradeSha} placeholder='TradeSha' />
-          <input type='hidden' name='Version' value={tradeInfo.Version} placeholder='Version' />
-          <input type='hidden' name='MerchantOrderNo' value={tradeInfo.MerchantOrderNo} />
-          <input type='hidden' name='Amt' value={tradeInfo.Amt} />
-          <input type='hidden' name='ItemDesc' value={tradeInfo.ItemDesc} />
-          <input type='hidden' name='TimeStamp' value={tradeInfo.TimeStamp} />
-          <input type='hidden' name='Email' value={tradeInfo.Email} />
-          <input type='hidden' name='NotifyUrl' value={tradeInfo.NotifyURL} />
-          <input type='hidden' name='ReturnUrl' value={tradeInfo.ReturnURL} />
+          <input type='text' name='MerchantID' value={tradeInfo.MerchantID} placeholder='MerchantID' />
+          <input type='text' name='TradeInfo' value={tradeInfo.TradeInfo} placeholder='TradeInfo' />
+          <input type='text' name='TradeSha' value={tradeInfo.TradeSha} placeholder='TradeSha' />
+          <input type='text' name='Version' value={tradeInfo.Version} placeholder='Version' />
+          <input type='text' name='MerchantOrderNo' value={tradeInfo.MerchantOrderNo} />
+          <input type='text' name='Amt' value={tradeInfo.Amt} />
+          <input type='text' name='ItemDesc' value={tradeInfo.ItemDesc} />
+          <input type='text' name='TimeStamp' value={tradeInfo.TimeStamp} />
+          <input type='text' name='Email' value={tradeInfo.Email} />
+          <input type='text' name='NotifyUrl' value={tradeInfo.NotifyURL} />
+          <input type='text' name='ReturnUrl' value={tradeInfo.ReturnURL} />
+          <input type='text' name='ClientBackURL' value={tradeInfo.ClientBackURL} />
           <button type='submit' className='rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700'>
             Payment
           </button>

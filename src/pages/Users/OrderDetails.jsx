@@ -3,6 +3,7 @@ import useSWR from 'swr';
 
 const OrderDetails = () => {
   const { id } = useParams();
+
   const fetcher = async (url) => {
     const response = await fetch(url, {
       method: 'GET',
@@ -15,7 +16,6 @@ const OrderDetails = () => {
     if (!response.ok) throw new Error(data.message);
     return data;
   };
-
   const { data, error } = useSWR(`${process.env.REACT_APP_API}/api/user/orders/${id}`, fetcher);
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
@@ -23,17 +23,16 @@ const OrderDetails = () => {
   return (
     <div>
       {data && (
-        <div key={data.data.id} className='mx-auto mb-8 w-full bg-neutral-200 px-4 py-4'>
-          <div></div>
+        <div key={data.data.id} className='px-4 py-14 2xl:container md:mx-auto md:px-20 '>
           <div className='item-start flex flex-col justify-start space-y-2 '>
             <h1 className='text-gray-800 text-3xl font-semibold leading-7 lg:text-4xl lg:leading-9 dark:text-white'>
-              Order # {orderItems.id}
+              訂單編號 : {orderItems.id}
               <button className='ml-8 text-blue-500' onClick={() => window.history.back()}>
-                back
+                返回
               </button>
             </h1>
             <p className='dark:text-gray-300 text-gray-600 text-base font-medium leading-6'>
-              {orderItems.created_at.split('T')[0]}
+              下單日期 : {orderItems.created_at.split('T')[0]}
             </p>
           </div>
           <div className='w-full '>
@@ -59,13 +58,10 @@ const OrderDetails = () => {
                     </div>
                   </div>
                   <div className='flex w-full items-start justify-between space-x-8'>
-                    <p className='text-base leading-6 xl:text-lg '>
-                      {item.price}
-                      <span className='text-red-300 line-through'> ${item.price}</span>
-                    </p>
+                    <p className='text-base leading-6 xl:text-lg '>${item.price}</p>
                     <p className='text-gray-800 text-base leading-6 xl:text-lg '>{item.qty}</p>
                     <p className='text-gray-800 text-base font-semibold leading-6 xl:text-lg '>
-                      {item.price * item.qty}
+                      ${item.price * item.qty}
                     </p>
                   </div>
                 </div>
@@ -73,28 +69,54 @@ const OrderDetails = () => {
             ))}
             <div className='flex w-full flex-col items-stretch justify-center space-y-4 md:flex-row md:space-x-6 md:space-y-0 xl:space-x-8'>
               <div className='bg-gray-50  flex w-full flex-col space-y-6 px-4 py-6 md:p-6 xl:p-8'>
-                <h3 className='text-gray-800 text-xl font-semibold leading-5 '>Summary</h3>
+                <h3 className='text-gray-800 text-xl font-semibold leading-5 '>付款資訊</h3>
                 <div className='border-gray-200 flex w-full flex-col items-center justify-center space-y-4 border-b pb-4'>
                   <div className='flex w-full justify-between'>
-                    <p className='text-gray-800 text-base leading-4 '>總價 :</p>
+                    <p className='text-gray-800 text-base leading-4 '>付款方式 :</p>
+                    <p className=' text-gray-600 text-base leading-4'>{orderItems.payment_type}</p>
+                  </div>
+                  <div className='flex w-full items-center justify-between'>
+                    <p className='text-gray-800 text-base leading-4'>付款帳號 :</p>
+
+                    <p className='text-gray-600 text-base leading-4'>
+                      {orderItems.payment_act &&
+                        (orderItems.payment_act.length === 5
+                          ? orderItems.payment_act
+                          : orderItems.payment_act
+                              .replace(/(\d{4})(\d{2})(\d{4})/, '$1-$2**-****-$3')
+                              .replace(/(.{4})(?=.)/g, '$1-'))}
+                    </p>
+                  </div>
+                  <div className='flex w-full items-center justify-between'>
+                    <p className='text-gray-800 text-base leading-4 '>付款銀行 :</p>
+                    <p className='text-gray-600 text-base leading-4'>{orderItems.payment_bank}</p>
+                  </div>
+                </div>
+                <div className='flex w-full items-center justify-between'>
+                  <p className='text-gray-800 text-base font-semibold leading-4 '>付款狀態 :</p>
+                  <p className=' text-gray-600 text-base font-semibold leading-4'>{orderItems.payment_status}</p>
+                </div>
+              </div>
+              <div className='bg-gray-50  flex w-full flex-col space-y-6 px-4 py-6 md:p-6 xl:p-8'>
+                <h3 className='text-gray-800 text-xl font-semibold leading-5 '>金額總結</h3>
+                <div className='border-gray-200 flex w-full flex-col items-center justify-center space-y-4 border-b pb-4'>
+                  <div className='flex w-full justify-between'>
+                    <p className='text-gray-800 text-base leading-4 '>未稅價 :</p>
                     <p className=' text-gray-600 text-base leading-4'>${orderItems.sub_total}</p>
                   </div>
                   <div className='flex w-full items-center justify-between'>
-                    <p className='text-gray-800 text-base leading-4'>
-                      Discount{' '}
-                      <span className='bg-gray-200  text-gray-800 p-1 text-xs font-medium leading-3 '>STUDENT</span>
-                    </p>
+                    <p className='text-gray-800 text-base leading-4'>折扣</p>
                     <p className='text-gray-600 text-base leading-4'>-$0.00 (0%)</p>
                   </div>
                   <div className='flex w-full items-center justify-between'>
-                    <p className='text-gray-800 text-base leading-4 '>TAX :</p>
+                    <p className='text-gray-800 text-base leading-4 '>運費+服務費 :</p>
                     <p className='text-gray-600 text-base leading-4'>
                       ${orderItems.total - orderItems.sub_total} (10%)
                     </p>
                   </div>
                 </div>
                 <div className='flex w-full items-center justify-between'>
-                  <p className='text-gray-800 text-base font-semibold leading-4 '>Total</p>
+                  <p className='text-gray-800 text-base font-semibold leading-4 '>總價 :</p>
                   <p className=' text-gray-600 text-base font-semibold leading-4'>${orderItems.total}</p>
                 </div>
               </div>

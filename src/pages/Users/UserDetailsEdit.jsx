@@ -13,7 +13,7 @@ const UserDetailsEdit = () => {
 
   useEffect(() => {
     async function getUserData() {
-      const response = await fetch('http://localhost:3060/api/user/edit', {
+      const response = await fetch(`${process.env.REACT_APP_API}/api/user/edit`, {
         credentials: 'include',
         mode: 'cors',
       });
