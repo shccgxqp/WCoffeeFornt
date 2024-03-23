@@ -19,14 +19,13 @@ const ProductDetails = ({ product }) => {
           <span className='font-semibold'>Weight:</span> {product.weight}
         </p>
         <p>
-          <span className='font-semibold'>Description:</span>{' '}
-          {product.description || 'N/A'}
+          <span className='font-semibold'>Description:</span> {product.description || 'N/A'}
         </p>
       </div>
       <div>
         <img
           className='h-60 w-60 object-cover'
-          src={`http://localhost:3060/images/${product.image}.jpg`}
+          src={`${process.env.REACT_APP_API}/images/${product.image}.jpg`}
           alt={product.name}
         />
       </div>

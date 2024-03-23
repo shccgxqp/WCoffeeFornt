@@ -8,7 +8,6 @@ const Pagination = ({ allItems, postsPerPage, currentPage }) => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
-
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -18,13 +17,22 @@ const Pagination = ({ allItems, postsPerPage, currentPage }) => {
     pages.push(i);
   }
 
-  const displayPages = isMobile ? pages.slice(0, 3) : pages;
+  const mobilePage = (pages, currentPage) => {
+    const index = pages.indexOf(currentPage);
+    if (index === -1) {
+      return [];
+    }
+    const startIndex = Math.max(0, index - 1);
+    const endIndex = Math.min(pages.length - 1, index + 1);
+    return pages.slice(startIndex, endIndex + 1);
+  };
 
+  const displayPages = isMobile ? mobilePage(pages, currentPage) : pages;
   return (
     <div className='pagination my-4 flex items-center justify-center'>
       <NavLink
         className='flex h-10 w-10 items-center justify-center rounded-md border border-white bg-golden text-white'
-        to={`/user/order/?page=${() => (currentPage === 1 ? 1 : currentPage - 1)}`}>
+        to={`/user/order/?page=${currentPage === 1 ? 1 : currentPage - 1}`}>
         {'<'}
       </NavLink>
       {displayPages.map((page, index) => (
@@ -39,7 +47,7 @@ const Pagination = ({ allItems, postsPerPage, currentPage }) => {
       ))}
       <NavLink
         className='flex h-10 w-10 items-center justify-center rounded-md border border-white bg-golden text-white'
-        to={`user/order/?page=${() => (currentPage === pages.length ? pages.length : currentPage + 1)}`}>
+        to={`/user/order/?page=${currentPage === pages.length ? pages.length : currentPage + 1}`}>
         {'>'}
       </NavLink>
     </div>

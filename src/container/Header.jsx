@@ -2,7 +2,9 @@ import { images } from '../constants';
 
 const Header = () => {
   return (
-    <div className='flex h-screen flex-col items-center justify-center bg-white px-4 md:flex-row md:px-24' id='home'>
+    <div
+      className='flex  flex-col items-center justify-center bg-white px-4 md:min-h-screen md:flex-row md:px-24'
+      id='home'>
       <div className='items-flex-start mt-8 flex w-full flex-1 flex-col justify-center'>
         <div className='mb-4'>
           <p className=' font-base font-semibold uppercase tracking-wide text-black md:text-xl xl:text-3xl'>

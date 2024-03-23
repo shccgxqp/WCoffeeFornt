@@ -37,7 +37,6 @@ const Cart = () => {
 
       const data = await response.json();
       if (!response.ok) throw new Error(data.message || 'Login failed.');
-      console.log(data);
 
       setCart([]);
       setCookie('cart', JSON.stringify([]), 1);
@@ -90,9 +89,9 @@ const Cart = () => {
 
   return (
     <div className='mx-auto mt-8 min-h-screen w-[600px]'>
-      <h1 className='mb-4 text-2xl font-semibold'>Shopping Cart</h1>
+      <h1 className='mb-4 text-2xl font-semibold'>購物車</h1>
       {cart.length === 0 ? (
-        <p>Your cart is empty.</p>
+        <p>您的購物車是空的</p>
       ) : (
         <div>
           {cart.map((item, index) => (

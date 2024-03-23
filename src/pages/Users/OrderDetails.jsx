@@ -94,7 +94,15 @@ const OrderDetails = () => {
                 </div>
                 <div className='flex w-full items-center justify-between'>
                   <p className='text-gray-800 text-base font-semibold leading-4 '>付款狀態 :</p>
-                  <p className=' text-gray-600 text-base font-semibold leading-4'>{orderItems.payment_status}</p>
+                  <p className=' text-gray-600 text-base font-semibold leading-4'>
+                    {orderItems.payment_status === '未付款' ? (
+                      <a className='bg-red-500 p-1 text-white' href={`/payment/${orderItems.id}`}>
+                        未付款
+                      </a>
+                    ) : (
+                      orderItems.payment_status
+                    )}
+                  </p>
                 </div>
               </div>
               <div className='bg-gray-50  flex w-full flex-col space-y-6 px-4 py-6 md:p-6 xl:p-8'>
