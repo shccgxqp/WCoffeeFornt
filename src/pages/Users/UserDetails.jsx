@@ -105,11 +105,15 @@ const UserDetails = () => {
               <caption className='caption-top px-6 py-3'>配送資訊</caption>
               <thead>
                 <tr>
-                  <th className='border border-x-0 border-solid px-6 py-3 text-left'></th>
-                  <th className='border border-x-0 border-solid px-6 py-3 text-left uppercase'>配送名稱</th>
-                  <th className='border border-x-0 border-solid px-6 py-3 text-left uppercase'>國家</th>
-                  <th className='border border-x-0 border-solid px-6 py-3 text-left uppercase'>城市</th>
-                  <th className='border border-x-0 border-solid px-6 py-3 text-left uppercase'>地址</th>
+                  <th className='ms:px-6 border border-x-0 border-solid px-2 py-3 text-left'></th>
+                  <th className='ms:px-6 border border-x-0 border-solid px-2 py-3 text-left uppercase'>配送名稱</th>
+                  <th className='ms:block ms:px-6  hidden border border-x-0 border-solid px-2 py-3 text-left uppercase'>
+                    國家
+                  </th>
+                  <th className='ms:block ms:px-6 hidden border border-x-0 border-solid  px-2 py-3 text-left uppercase'>
+                    城市
+                  </th>
+                  <th className='ms:px-6 border border-x-0 border-solid px-2 py-3 text-left uppercase'>地址</th>
                 </tr>
               </thead>
               <tbody>
@@ -123,8 +127,8 @@ const UserDetails = () => {
                         className='class="form-checkbox text-yellow-600" h-5 w-5'></input>
                     </td>
                     <td className='border-x-0 border-t-0 p-4 px-6'>{shipment.state}</td>
-                    <td className='border-x-0 border-t-0 p-4 px-6'>{shipment.country}</td>
-                    <td className='border-x-0 border-t-0 p-4 px-6'>{shipment.city}</td>
+                    <td className='ms:block hidden border-x-0 border-t-0 p-4 px-6'>{shipment.country}</td>
+                    <td className='ms:block hidden border-x-0 border-t-0 p-4 px-6'>{shipment.city}</td>
                     <td className='border-x-0 border-t-0 p-4 px-6'>{shipment.address}</td>
                   </tr>
                 ))}
