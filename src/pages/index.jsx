@@ -18,7 +18,6 @@ export { default as UserDetailsEdit } from './Users/UserDetailsEdit';
 
 export { default as Order } from './Users/Order';
 export { default as OrderDetails } from './Users/OrderDetails';
-export { default as OrderCheck } from './Users/OrderCheck';
 export { default as OrderResult } from './Users/OrderResult';
 
 export { default as Shipment } from './Users/Shipment';

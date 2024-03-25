@@ -19,7 +19,7 @@ const OrderDetails = () => {
   const { data, error } = useSWR(`${process.env.REACT_APP_API}/api/user/orders/${id}`, fetcher);
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
-  let orderItems = data.data[0];
+  const orderItems = data.data.order;
   return (
     <div>
       {data && (

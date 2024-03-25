@@ -98,7 +98,12 @@ const Order = () => {
         </>
       )}
 
-      <Pagination allItems={data.data.totalCount} postsPerPage={pageLimit} currentPage={parseInt(page)} />
+      <Pagination
+        allItems={data.data.totalCount}
+        postsPerPage={pageLimit}
+        currentPage={parseInt(page)}
+        url={'/user/order'}
+      />
     </div>
   );
 };

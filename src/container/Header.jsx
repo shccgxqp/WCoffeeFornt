@@ -3,9 +3,9 @@ import { images } from '../constants';
 const Header = () => {
   return (
     <div
-      className='flex  flex-col items-center justify-center bg-white px-4 md:min-h-screen md:flex-row md:px-24'
+      className='flex  flex-col items-center justify-center bg-white px-4 md:min-h-screen md:flex-row md:px-20'
       id='home'>
-      <div className='items-flex-start mt-8 flex w-full flex-1 flex-col justify-center'>
+      <div className='items-flex-start mt-4 flex w-full flex-1 flex-col justify-center'>
         <div className='mb-4'>
           <p className=' font-base font-semibold uppercase tracking-wide text-black md:text-xl xl:text-3xl'>
             找到屬於你的咖啡
@@ -21,7 +21,7 @@ const Header = () => {
           Explore Menu
         </button>
       </div>
-      <div className='mt-16 flex w-full flex-1 items-center justify-center xl:ml-4'>
+      <div className='flex w-full flex-1 items-center justify-center xl:ml-2'>
         <img className='w-full md:w-3/5 ' src={images.coffee02} alt='header_image' />
       </div>
     </div>

@@ -65,7 +65,13 @@ const Store = () => {
           </div>
         </>
       )}
-      <Pagination allItems={totalCount} currentPage={currentPage} setCurrentPage={setCurrentPage} postsPerPage={8} />
+      <Pagination
+        allItems={totalCount}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        postsPerPage={8}
+        url={'/store'}
+      />
     </div>
   );
 };

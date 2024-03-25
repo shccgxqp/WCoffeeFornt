@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types'; // Import PropTypes
 import { NavLink } from 'react-router-dom';
-const Pagination = ({ allItems, postsPerPage, currentPage }) => {
+const Pagination = ({ allItems, postsPerPage, currentPage, url }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const Pagination = ({ allItems, postsPerPage, currentPage }) => {
     <div className='pagination my-4 flex items-center justify-center'>
       <NavLink
         className='flex h-10 w-10 items-center justify-center rounded-md border border-white bg-golden text-white'
-        to={`/user/order/?page=${currentPage === 1 ? 1 : currentPage - 1}`}>
+        to={`${url}/?page=${currentPage === 1 ? 1 : currentPage - 1}`}>
         {'<'}
       </NavLink>
       {displayPages.map((page, index) => (
@@ -41,13 +41,13 @@ const Pagination = ({ allItems, postsPerPage, currentPage }) => {
           className={`h-10 w-10 rounded-md border border-white ${
             currentPage === page ? 'bg-while text-golden' : 'bg-golden text-white '
           } flex items-center justify-center`}
-          to={`/user/order/?page=${page}`}>
+          to={`${url}/?page=${page}`}>
           {page}
         </NavLink>
       ))}
       <NavLink
         className='flex h-10 w-10 items-center justify-center rounded-md border border-white bg-golden text-white'
-        to={`/user/order/?page=${currentPage === pages.length ? pages.length : currentPage + 1}`}>
+        to={`${url}/?page=${currentPage === pages.length ? pages.length : currentPage + 1}`}>
         {'>'}
       </NavLink>
     </div>
@@ -58,6 +58,7 @@ Pagination.propTypes = {
   allItems: PropTypes.number.isRequired,
   postsPerPage: PropTypes.number.isRequired,
   currentPage: PropTypes.number.isRequired,
+  url: PropTypes.string.isRequired,
 };
 
 export default Pagination;

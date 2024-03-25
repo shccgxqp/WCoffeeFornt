@@ -18,7 +18,7 @@ const StorePurchase = () => {
         }
         const data = await response.json();
         setResMessage(data.message);
-        setProduct(data.data[0]);
+        setProduct(data.data.product);
       } catch (error) {
         console.error(error);
         setResMessage('Error fetching product data');
