@@ -14,13 +14,13 @@ import { GiLouvrePyramid, GiWashingMachine, GiSwapBag, GiManualMeatGrinder } fro
 import { BiSolidCoffeeBean } from 'react-icons/bi';
 import { IoShirtOutline } from 'react-icons/io5';
 
-const navItems = [
+export const navItems = [
   { href: 'home', title: '首頁' },
   { href: 'about', title: '咖啡小知識' },
   { href: 'store', title: '線上商店' },
 ];
 
-const userItems = [
+export const userItems = [
   {
     id: '1',
     name: '個人資料',
@@ -29,8 +29,17 @@ const userItems = [
   },
   { id: '2', name: '訂單', href: 'order/?page=1', icon: <RiContactsLine /> },
 ];
-
-const shopItems = [
+export const adminItems = [
+  {
+    id: '1',
+    name: '使用者資料',
+    href: '',
+    icon: <IoMdContacts />,
+  },
+  { id: '2', name: '訂單資料', href: 'order/?page=1', icon: <RiContactsLine /> },
+  { id: '3', name: '商品資料', href: 'product/?page=1', icon: <RiAppsLine /> },
+];
+export const shopItems = [
   {
     id: '3',
     name: '咖啡豆',
@@ -68,7 +77,7 @@ const shopItems = [
   },
 ];
 
-const links = [
+export const links = [
   {
     title: 'Dashboard',
     links: [
@@ -191,4 +200,4 @@ export const vipDataImg = (strNumber) => {
   }
 };
 
-export default { navItems, vipData, vipDataImg, links, userItems, shopItems };
+export default { navItems, vipData, vipDataImg, links, userItems, adminItems, shopItems };

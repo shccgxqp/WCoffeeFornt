@@ -10,14 +10,18 @@ export { default as StorePurchase } from './Stores/StorePurchase';
 export { default as Cart } from './Stores/Cart';
 
 export { default as User } from './Users/User';
-export { default as Login } from './Users/Login';
-export { default as AuthLogin } from './Users/AuthLogin';
-export { default as Register } from './Users/Register';
+export { default as UserLogin } from './Users/UserLogin';
+export { default as UserAuthLogin } from './Users/UserAuthLogin';
+export { default as UserRegister } from './Users/UserRegister';
 export { default as UserDetails } from './Users/UserDetails';
 export { default as UserDetailsEdit } from './Users/UserDetailsEdit';
+export { default as UserShipment } from './Users/UserShipment';
+export { default as UserOrder } from './Users/UserOrder';
+export { default as UserOrderDetails } from './Users/UserOrderDetails';
+export { default as UserOrderResult } from './Users/UserOrderResult';
 
-export { default as Order } from './Users/Order';
-export { default as OrderDetails } from './Users/OrderDetails';
-export { default as OrderResult } from './Users/OrderResult';
-
-export { default as Shipment } from './Users/Shipment';
+export { default as Admin } from './Admin/Admin';
+export { default as AdminUser } from './Admin/AdminUser';
+export { default as AdminProduct } from './Admin/AdminProduct';
+export { default as AdminOrder } from './Admin/AdminOrder';
+export { default as AdminSendEmail } from './Admin/AdminSendEmail';

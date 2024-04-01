@@ -9,7 +9,7 @@ import { data, images } from '../constants';
 
 const Navbar = (props) => {
   const [toggleMenu, setToggleMenu] = useState(false);
-  const { loggedIn, setLoggedIn, setIsAdmin } = props;
+  const { loggedIn, setLoggedIn, isAdmin, setIsAdmin } = props;
 
   const logOut = async () => {
     const response = await fetch(`${process.env.REACT_APP_API}/api/user/logout`, {
@@ -40,6 +40,14 @@ const Navbar = (props) => {
       <div className='flex'>
         {loggedIn ? (
           <>
+            {isAdmin && (
+              <NavLink
+                to='/admin'
+                className='mx-4 my-0 border-golden transition duration-500 ease-in-out hover:border-b'>
+                管理員
+              </NavLink>
+            )}
+
             <NavLink to='/User' className='mx-4 my-0 border-golden transition duration-500 ease-in-out hover:border-b'>
               會員專區
             </NavLink>

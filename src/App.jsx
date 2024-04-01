@@ -3,20 +3,25 @@ import {
   About,
   Home,
   NoMatch,
-  User,
-  Login,
-  Register,
+  Payment,
   Store,
   StorePurchase,
   Cart,
+  User,
+  UserLogin,
+  UserRegister,
   UserDetails,
   UserDetailsEdit,
-  AuthLogin,
-  Shipment,
-  Payment,
-  Order,
-  OrderDetails,
-  OrderResult,
+  UserAuthLogin,
+  UserShipment,
+  UserOrder,
+  UserOrderDetails,
+  UserOrderResult,
+  Admin,
+  AdminUser,
+  AdminProduct,
+  AdminOrder,
+  AdminSendEmail,
 } from './pages';
 import { Layout } from './pages';
 import AuthProvider from './contexts/AuthProvider';
@@ -39,14 +44,20 @@ const App = () => {
               <Route path='/user' element={<User />}>
                 <Route index element={<UserDetails />} />
                 <Route path='edit' element={<UserDetailsEdit />} />
-                <Route path='order' element={<Order />} />
-                <Route path='order/details/:id' element={<OrderDetails />} />
-                <Route path='order/result' element={<OrderResult />} />
-                <Route path='shipment' element={<Shipment />} />
+                <Route path='order' element={<UserOrder />} />
+                <Route path='order/details/:id' element={<UserOrderDetails />} />
+                <Route path='order/result' element={<UserOrderResult />} />
+                <Route path='shipment' element={<UserShipment />} />
               </Route>
-              <Route path='/login' element={<Login />} />
-              <Route path='/register' element={<Register />} />
-              <Route path='/auth/login' element={<AuthLogin />} />
+              <Route path='/admin' element={<Admin />}>
+                <Route index element={<AdminUser />} />
+                <Route path='sendEmail/:id' element={<AdminSendEmail />} />
+                <Route path='product' element={<AdminProduct />} />
+                <Route path='order' element={<AdminOrder />} />
+              </Route>
+              <Route path='/login' element={<UserLogin />} />
+              <Route path='/register' element={<UserRegister />} />
+              <Route path='/auth/login' element={<UserAuthLogin />} />
               <Route path='/api/*' element={<Navigate to='/' />} />
               <Route path='*' element={<NoMatch />} />
             </Route>
