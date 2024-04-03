@@ -50,7 +50,7 @@ const StorePurchase = () => {
               <img
                 alt='Product image'
                 className='border-gray-200 w-full rounded border object-cover object-center lg:w-1/2'
-                src={`${process.env.REACT_APP_API}/images/${product.image}.jpg`}
+                src={`${process.env.REACT_APP_API}${product.image}`}
               />
               <div className='mt-6 w-full lg:mt-0 lg:w-1/2 lg:py-6 lg:pl-10'>
                 <h2 className='title-font text-3xl font-medium text-red-500'>{resMessage}</h2>

@@ -17,7 +17,7 @@ import { IoShirtOutline } from 'react-icons/io5';
 export const navItems = [
   { href: 'home', title: '首頁' },
   { href: 'about', title: '咖啡小知識' },
-  { href: 'store', title: '線上商店' },
+  { href: 'store?page=1&limit=8&category=0', title: '線上商店' },
 ];
 
 export const userItems = [
