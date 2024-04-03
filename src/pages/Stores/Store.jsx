@@ -47,7 +47,7 @@ const Store = () => {
                 <div className='flex h-56 w-full items-end justify-end '>
                   <img
                     className='h-full w-full object-cover'
-                    src={`${process.env.REACT_APP_API}/images/${item.image}.jpg`}
+                    src={`${process.env.REACT_APP_API}${item.image}`}
                     alt={item.name}
                   />
                   <Link
@@ -69,6 +69,8 @@ const Store = () => {
         allItems={totalCount}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
+        limit={8}
+        category={parseInt(currentCategoryId)}
         postsPerPage={8}
         url={'/store'}
       />

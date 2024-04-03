@@ -4,7 +4,7 @@ import { useAuth } from '../../contexts/useProvider';
 import { FacebookLoginButton, GoogleLoginButton } from 'react-social-login-buttons';
 
 const Login = () => {
-  const { setLoggedIn } = useAuth();
+  const { setLoggedIn, setIsAdmin } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [connectError, setConnectError] = useState('');
@@ -53,8 +53,8 @@ const Login = () => {
 
       const data = await response.json();
       if (!response.ok) throw new Error(data.message || 'Login failed.');
-
       setLoggedIn(true);
+      setIsAdmin(data.data.user.isAdmin);
       navigate('/');
     } catch (error) {
       console.error(error);

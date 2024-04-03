@@ -20,7 +20,9 @@ import {
   Admin,
   AdminUser,
   AdminProduct,
+  AdminProductCreate,
   AdminOrder,
+  AdminOrderEdit,
   AdminSendEmail,
 } from './pages';
 import { Layout } from './pages';
@@ -53,7 +55,9 @@ const App = () => {
                 <Route index element={<AdminUser />} />
                 <Route path='sendEmail/:id' element={<AdminSendEmail />} />
                 <Route path='product' element={<AdminProduct />} />
+                <Route path='product/create' element={<AdminProductCreate />} />
                 <Route path='order' element={<AdminOrder />} />
+                <Route path='order/edit/:id' element={<AdminOrderEdit />} />
               </Route>
               <Route path='/login' element={<UserLogin />} />
               <Route path='/register' element={<UserRegister />} />

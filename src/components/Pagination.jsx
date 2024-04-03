@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types'; // Import PropTypes
 import { NavLink } from 'react-router-dom';
-const Pagination = ({ allItems, postsPerPage, currentPage, url }) => {
+const Pagination = ({ allItems, postsPerPage, currentPage, category, limit, url }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const Pagination = ({ allItems, postsPerPage, currentPage, url }) => {
     <div className='pagination my-4 flex items-center justify-center'>
       <NavLink
         className='flex h-10 w-10 items-center justify-center rounded-md border border-white bg-golden text-white'
-        to={`${url}/?page=${currentPage === 1 ? 1 : currentPage - 1}`}>
+        to={`${url}/?page=${currentPage === 1 ? 1 : currentPage - 1}${limit ? '&limit=' + limit : ''}${category ? '&category=' + category : ''}`}>
         {'<'}
       </NavLink>
       {displayPages.map((page, index) => (
@@ -41,13 +41,13 @@ const Pagination = ({ allItems, postsPerPage, currentPage, url }) => {
           className={`h-10 w-10 rounded-md border border-white ${
             currentPage === page ? 'bg-while text-golden' : 'bg-golden text-white '
           } flex items-center justify-center`}
-          to={`${url}/?page=${page}`}>
+          to={`${url}/?page=${page}${limit ? '&limit=' + limit : ''}${category ? '&category=' + category : ''}`}>
           {page}
         </NavLink>
       ))}
       <NavLink
         className='flex h-10 w-10 items-center justify-center rounded-md border border-white bg-golden text-white'
-        to={`${url}/?page=${currentPage === pages.length ? pages.length : currentPage + 1}`}>
+        to={`${url}/?page=${currentPage === pages.length ? pages.length : currentPage + 1}${limit ? '&limit=' + limit : ''}${category ? '&category=' + category : ''}`}>
         {'>'}
       </NavLink>
     </div>
@@ -58,6 +58,8 @@ Pagination.propTypes = {
   allItems: PropTypes.number.isRequired,
   postsPerPage: PropTypes.number.isRequired,
   currentPage: PropTypes.number.isRequired,
+  category: PropTypes.number,
+  limit: PropTypes.number,
   url: PropTypes.string.isRequired,
 };
 

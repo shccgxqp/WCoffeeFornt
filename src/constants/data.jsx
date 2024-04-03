@@ -36,20 +36,21 @@ export const adminItems = [
     href: '',
     icon: <IoMdContacts />,
   },
-  { id: '2', name: '訂單資料', href: 'order/?page=1', icon: <RiContactsLine /> },
-  { id: '3', name: '商品資料', href: 'product/?page=1', icon: <RiAppsLine /> },
+  { id: '2', name: '訂單資料', href: 'order/?page=1&limit=8', icon: <RiContactsLine /> },
+  { id: '3', name: '商品資料', href: 'product/?page=1&limit=8&category=0', icon: <RiAppsLine /> },
 ];
 export const shopItems = [
-  {
-    id: '3',
-    name: '咖啡豆',
-    icon: <BiSolidCoffeeBean />,
-  },
   {
     id: '2',
     name: '濾掛咖啡',
     icon: <GiSwapBag />,
   },
+  {
+    id: '3',
+    name: '咖啡豆',
+    icon: <BiSolidCoffeeBean />,
+  },
+
   {
     id: '4',
     name: '工具',
@@ -74,6 +75,11 @@ export const shopItems = [
     id: '1',
     name: '其他',
     icon: <RiAppsLine />,
+  },
+  {
+    id: '0',
+    name: '所有商品',
+    icon: <GiSwapBag />,
   },
 ];
 
@@ -183,6 +189,23 @@ export const vipData = (strNumber) => {
   }
 };
 
+export const zipCode = (strNumber) => {
+  switch (strNumber) {
+    case 1:
+      return '宅配';
+    case 2:
+      return '店到店';
+    case 3:
+      return '黑貓';
+    case 4:
+      return '冷凍';
+    case 5:
+      return '快速配送';
+    default:
+      return '資料錯誤';
+  }
+};
+
 export const vipDataImg = (strNumber) => {
   switch (strNumber) {
     case '1':
@@ -200,4 +223,4 @@ export const vipDataImg = (strNumber) => {
   }
 };
 
-export default { navItems, vipData, vipDataImg, links, userItems, adminItems, shopItems };
+export default { navItems, vipData, vipDataImg, links, userItems, adminItems, zipCode, shopItems };

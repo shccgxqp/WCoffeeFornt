@@ -17,7 +17,7 @@ const AdminUser = () => {
     return data;
   };
   const data = useSWR(`${process.env.REACT_APP_API}/api/admin/users`, fetcher);
-  if (data && data.data) console.log(data.data.data);
+  // if (data && data.data) console.log(data.data.data);
 
   const handleToggleAdmin = async (id, isAdmin) => {
     try {
@@ -40,10 +40,10 @@ const AdminUser = () => {
   };
 
   return (
-    <div className='min-h-screen px-4 py-14 2xl:container md:px-6 2xl:mx-auto 2xl:px-20'>
+    <div className='min-h-screen px-4 py-4 2xl:container md:px-6 2xl:mx-auto 2xl:px-20'>
       {data.data && (
         <>
-          <div className='mt-6 flex flex-col'>
+          <div className='flex flex-col'>
             <div className='-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>
               <div className='inline-block min-w-full py-2 align-middle md:px-6 lg:px-8'>
                 <div className='border-gray-200 dark:border-gray-700  ms:border overflow-hidden md:rounded-lg'>
