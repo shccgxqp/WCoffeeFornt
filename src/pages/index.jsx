@@ -23,6 +23,7 @@ export { default as UserOrderResult } from './Users/UserOrderResult';
 export { default as Admin } from './Admin/Admin';
 export { default as AdminUser } from './Admin/AdminUser';
 export { default as AdminProduct } from './Admin/AdminProduct';
+export { default as AdminProductEdit } from './Admin/AdminProductEdit';
 export { default as AdminProductCreate } from './Admin/AdminProductCreate';
 export { default as AdminOrder } from './Admin/AdminOrder';
 export { default as AdminOrderEdit } from './Admin/AdminOrderEdit';

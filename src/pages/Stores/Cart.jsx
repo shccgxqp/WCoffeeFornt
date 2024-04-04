@@ -20,6 +20,7 @@ const Cart = () => {
     productItems = productItems.map((item) => {
       return { id: parseInt(item.id), qty: parseInt(item.quantity) };
     });
+    console.log(productItems);
     try {
       const response = await fetch(`${process.env.REACT_APP_API}/api/user/orders`, {
         method: 'POST',
@@ -29,14 +30,14 @@ const Cart = () => {
         body: JSON.stringify({
           shipment_id: checkShipment,
           comments: comments,
-          product: productItems,
+          products: productItems,
         }),
         credentials: 'include',
         mode: 'cors',
       });
 
       const data = await response.json();
-      if (!response.ok) throw new Error(data.message || 'Login failed.');
+      if (!response.ok) throw new Error(data.message || '購買失敗，請收後再嘗試。');
 
       setCart([]);
       setCookie('cart', JSON.stringify([]), 1);

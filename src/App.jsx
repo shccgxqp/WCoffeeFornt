@@ -1,5 +1,9 @@
+import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import AuthProvider from './contexts/AuthProvider';
+import ContextProvider from './contexts/ContextProvider';
 import {
+  Layout,
   About,
   Home,
   NoMatch,
@@ -21,17 +25,15 @@ import {
   AdminUser,
   AdminProduct,
   AdminProductCreate,
+  AdminProductEdit,
   AdminOrder,
   AdminOrderEdit,
   AdminSendEmail,
 } from './pages';
-import { Layout } from './pages';
-import AuthProvider from './contexts/AuthProvider';
-import ContextProvider from './contexts/ContextProvider';
 
 const App = () => {
   return (
-    <div>
+    <React.Fragment>
       <AuthProvider>
         <ContextProvider>
           <Routes>
@@ -56,6 +58,7 @@ const App = () => {
                 <Route path='sendEmail/:id' element={<AdminSendEmail />} />
                 <Route path='product' element={<AdminProduct />} />
                 <Route path='product/create' element={<AdminProductCreate />} />
+                <Route path='product/edit/:id' element={<AdminProductEdit />} />
                 <Route path='order' element={<AdminOrder />} />
                 <Route path='order/edit/:id' element={<AdminOrderEdit />} />
               </Route>
@@ -68,7 +71,7 @@ const App = () => {
           </Routes>
         </ContextProvider>
       </AuthProvider>
-    </div>
+    </React.Fragment>
   );
 };
 

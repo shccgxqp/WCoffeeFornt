@@ -9,6 +9,7 @@ const AdminProduct = () => {
   const page = searchParams.get('page') || '1';
   const pageLimit = searchParams.get('limit') || '8';
   const category = searchParams.get('category');
+
   const fetcher = async (url) => {
     const response = await fetch(url, {
       method: 'GET',
@@ -26,7 +27,7 @@ const AdminProduct = () => {
     `${process.env.REACT_APP_API}/api/admin/products?page=${page}&limit=${pageLimit}&category=${category}`,
     fetcher,
   );
-  // if (data && data.data) console.log(data.data);
+  if (data && data.data) console.log(data.data);
 
   const handleDeleteProduct = async (id) => {
     try {
@@ -51,7 +52,7 @@ const AdminProduct = () => {
   return (
     <div className='min-h-screen px-4 py-4 2xl:container md:px-6 2xl:mx-auto 2xl:px-20'>
       {data.data && (
-        <>
+        <React.Fragment>
           <div className='flex flex-col'>
             <div key='category' className='flex flex-row justify-center'>
               {shopItems.map((category, index) => (
@@ -107,7 +108,6 @@ const AdminProduct = () => {
                           <tr key={item.id}>
                             <td className='whitespace-nowrap px-4 py-4 text-sm font-medium'>{item.id}</td>
                             <td className='whitespace-nowrap px-4 py-4 text-sm font-medium'>
-                              {' '}
                               <img
                                 className='h-10 w-10 object-cover'
                                 src={`${process.env.REACT_APP_API}${item.image}`}
@@ -117,13 +117,13 @@ const AdminProduct = () => {
                             <td className='items-center whitespace-nowrap px-4 py-4 text-sm font-medium'>
                               {item.name}
                             </td>
-                            <td className='whitespace-nowrap px-4 py-4 text-sm font-medium'>{item.Category}</td>
+                            <td className='whitespace-nowrap px-4 py-4 text-sm font-medium'>{item.category}</td>
                             <td className='whitespace-nowrap px-4 py-4 text-sm font-medium'>
-                              {item.Category === '咖啡豆' ? (
+                              {item.category === '咖啡豆' ? (
                                 <React.Fragment key={item.name}>
                                   <p>
                                     <span>產地 :</span>
-                                    {item.Origin}
+                                    {item.origin}
                                   </p>
                                   <p>
                                     <span>研磨度 :</span>
@@ -131,13 +131,13 @@ const AdminProduct = () => {
                                   </p>
                                 </React.Fragment>
                               ) : (
-                                ''
+                                <p>{item.category}</p>
                               )}
 
                               {item.description ? item.description : '無資料'}
                             </td>
                             <td className='whitespace-nowrap px-4 py-4 text-sm font-medium'>
-                              {item.price + ' / ' + item.Unit}
+                              {item.price + ' / ' + item.unit}
                             </td>
                             <td className='whitespace-nowrap px-4 py-4 text-sm font-medium'>
                               {' '}
@@ -170,7 +170,7 @@ const AdminProduct = () => {
             category={parseInt(category)}
             url={'/admin/product'}
           />
-        </>
+        </React.Fragment>
       )}
     </div>
   );

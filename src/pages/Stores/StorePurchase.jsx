@@ -55,7 +55,7 @@ const StorePurchase = () => {
               <div className='mt-6 w-full lg:mt-0 lg:w-1/2 lg:py-6 lg:pl-10'>
                 <h2 className='title-font text-3xl font-medium text-red-500'>{resMessage}</h2>
                 <h2 className='title-font text-gray-500 text-sm tracking-widest'>
-                  {product.Category}
+                  {product.category}
                   <a href='/store' className='ml-2 text-blue-500'>
                     返回
                   </a>

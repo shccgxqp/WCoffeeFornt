@@ -48,11 +48,11 @@ const OrderDetails = () => {
                     <h3 className='text-gray-800 text-xl font-semibold leading-6 xl:text-2xl '>{item.name}</h3>
                     <div className='flex flex-col items-start justify-start space-y-2'>
                       <p className='text-gray-800 text-sm leading-none '>
-                        <span className='dark:text-gray-400 text-gray-300'>weight: </span>
+                        <span className='dark:text-gray-400 text-gray-300'>重量: </span>
                         {item.weight}
                       </p>
                       <p className='text-gray-800 text-sm leading-none '>
-                        <span className='dark:text-gray-400 text-gray-300'>roast: </span>
+                        <span className='dark:text-gray-400 text-gray-300'>研磨度: </span>
                         {item.roast}
                       </p>
                     </div>

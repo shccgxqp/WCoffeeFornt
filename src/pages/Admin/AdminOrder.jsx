@@ -165,9 +165,12 @@ const AdminOrder = () => {
                             <td className='whitespace-nowrap px-4 py-4 text-sm font-medium'>
                               <p className='mb-2 flex'>
                                 修改 :
-                                <NavLink to={`/admin/order/edit/${user.id}`}>
+                                <NavLink>
                                   <MdEdit className='ml-2 text-xl text-amber-500' />
                                 </NavLink>
+                                {/* <NavLink to={`/admin/order/edit/${user.id}`}>
+                                  <MdEdit className='ml-2 text-xl text-amber-500' />
+                                </NavLink> */}
                               </p>
                               <p className='mb-2 flex'>
                                 作廢 :
