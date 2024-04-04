@@ -63,9 +63,9 @@ const Login = () => {
   };
 
   return (
-    <div className='flex h-full items-center justify-center md:h-[720px]'>
-      <div className='flex w-full flex-col md:w-2/5'>
-        <h1 className='mx-auto mb-4 mt-8 text-4xl font-bold'>Login</h1>
+    <div className='flex h-full items-center justify-center md:h-[750px]'>
+      <div className='flex w-full flex-col md:w-[600px]'>
+        <h1 className='mx-auto mb-4 mt-8 text-4xl font-bold'>登入頁面</h1>
         <div className='mt-4 text-red-500'>
           {connectError}
           {message}
@@ -106,9 +106,13 @@ const Login = () => {
           </p>
           <hr className='border-gray-400 my-4 w-full border-t' />
 
-          <div className='flex flex-col items-center justify-center lg:flex-row'>
-            <FacebookLoginButton onClick={facebookLogin} />
-            <GoogleLoginButton onClick={googleLogin} />
+          <div className='flex flex-col items-center lg:flex-row'>
+            <div className='m-2'>
+              <FacebookLoginButton onClick={facebookLogin} />
+            </div>
+            <div className='m-2'>
+              <GoogleLoginButton onClick={googleLogin} />
+            </div>
           </div>
         </div>
       </div>

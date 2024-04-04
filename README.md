@@ -80,6 +80,8 @@ WC-Coffee-Front 是一個使用Vite + React 建立的電子商務前端專案，
 ## 🗃️ Content - 專案內容
   統整完整再補齊畫面。
 
+  <img width=600px height=600px src="https://github.com/shccgxqp/WCoffeeBack/blob/main/picture/首頁.jpeg" alt="首頁照片">
+
 
 ## ⛏️ Built Using - 主要使用  
 

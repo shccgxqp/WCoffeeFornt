@@ -69,13 +69,12 @@ const Register = () => {
   return (
     <div className='flex h-full items-center justify-center'>
       <div className='flex w-full flex-col md:w-1/2'>
-        <h1 className='mx-auto mb-4 mt-8 text-4xl font-bold'>Register</h1>
-        <h2 className='mx-auto  mb-8 mt-4 text-2xl'>
-          會員註冊
+        <h1 className='mx-auto mb-4 mt-8 text-4xl font-bold'>
+          會員註冊{' '}
           <NavLink to={'/login'} className={'ml-4 text-blue-500 hover:underline'}>
-            back
+            返回
           </NavLink>
-        </h2>
+        </h1>
         <div className='mb-4'>
           <label htmlFor='email' className='mb-1 block'>
             帳號(E-Mail)*
@@ -220,7 +219,7 @@ const Register = () => {
           />
         </div>
         <button className='mb-4 rounded-lg bg-crimson px-6 py-3 text-xl text-black' onClick={onButtonClick}>
-          Register
+          註冊
         </button>
       </div>
     </div>

@@ -20,7 +20,6 @@ const Cart = () => {
     productItems = productItems.map((item) => {
       return { id: parseInt(item.id), qty: parseInt(item.quantity) };
     });
-    console.log(productItems);
     try {
       const response = await fetch(`${process.env.REACT_APP_API}/api/user/orders`, {
         method: 'POST',
