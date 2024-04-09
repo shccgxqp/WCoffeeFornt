@@ -24,9 +24,11 @@ WC-Coffee-Front 是一個使用Vite + React 建立的電子商務前端專案，
 - [🎈 Initial - 專案介紹](#-initial---專案介紹)
 - [🧐 Features - 專案功能](#-features---專案功能)
 - [🛠️ 停止計畫](#️-停止計畫)
-- [🗃️ Content - 專案內容](#️-content---專案內容)
 - [⛏️ Built Using - 主要使用](#️-built-using---主要使用)
 - [⚙️ Installing - 專案安裝流程](#️-installing---專案安裝流程)
+- [🗃️ Content - 專案內容](#️-content---專案內容)
+  - [消費者頁面](#消費者頁面)
+  - [管理員](#管理員)
 
 ## 🎈 Initial - 專案介紹 
 
@@ -77,10 +79,8 @@ WC-Coffee-Front 是一個使用Vite + React 建立的電子商務前端專案，
 * 商品管理、分類管理、訂單管理、用戶權限設定
 
 
-## 🗃️ Content - 專案內容
-  統整完整再補齊畫面。
 
-  <img width=600px height=600px src="https://github.com/shccgxqp/WCoffeeBack/blob/main/picture/首頁.jpeg" alt="首頁照片">
+
 
 
 ## ⛏️ Built Using - 主要使用  
@@ -136,3 +136,51 @@ REACT_APP_API= 伺服器網址 Ex:http://localhost:3060
 密碼 : 12345678
 ```
 
+## 🗃️ Content - 專案內容
+
+### 消費者頁面
+
+首頁畫面
+
+  <img width=531.5px height=300px src="https://github.com/shccgxqp/WCoffeeFront/blob/main/picture/%E9%A6%96%E9%A0%81.jpeg?raw=true" alt="首頁照片">
+
+登入頁面
+
+  <img width=531.5px height=300px src="https://github.com/shccgxqp/WCoffeeFront/blob/main/picture/%E7%99%BB%E5%85%A5%E9%A0%81%E9%9D%A2.jpeg?raw=true" alt="登入頁面">
+
+線上商店
+
+  <img width=531.5px height=300px src="https://github.com/shccgxqp/WCoffeeFront/blob/main/picture/%E5%95%86%E5%BA%97%E9%A0%81%E9%9D%A2.jpeg?raw=true" alt="商店照片">
+
+商品頁面
+
+  <img width=531.5px height=300px src="https://github.com/shccgxqp/WCoffeeFront/blob/main/picture/%E5%95%86%E5%93%81%E5%85%A7%E5%AE%B9.jpeg?raw=true" alt="商品頁面">
+
+購物車
+
+  <img width=531.5px height=300px src="https://github.com/shccgxqp/WCoffeeFront/blob/main/picture/%E8%B3%BC%E7%89%A9%E8%BB%8A.jpeg?raw=true" alt="購物車頁面">
+
+串接金流頁面
+
+  <img width=531.5px height=300px src="https://github.com/shccgxqp/WCoffeeFront/blob/main/picture/%E9%87%91%E6%B5%81%E8%B3%BC%E8%B2%B7%E9%A0%81%E9%9D%A2.jpeg?raw=true" alt="金流導向">
+
+付款完成，頁面顯示
+
+  <img width=531.5px height=300px src="https://github.com/shccgxqp/WCoffeeFront/blob/main/picture/%E8%B3%BC%E7%89%A9%E5%AE%8C%E6%88%90.jpeg?raw=true" alt="購物完成">
+
+
+### 管理員
+
+管理者-使用者管理 
+
+  <img width=531.5px height=300px src="https://github.com/shccgxqp/WCoffeeFront/blob/main/picture/%E7%AE%A1%E7%90%86%E8%80%85%E9%A0%81%E9%9D%A2.jpeg?raw=true" alt="管理者/使用者頁面">
+
+
+管理者-訂單管理 
+
+  <img width=531.5px height=300px src="https://github.com/shccgxqp/WCoffeeFront/blob/main/picture/%E8%A8%82%E5%96%AE%E6%B8%85%E5%96%AE.jpeg?raw=true" alt="管理者/訂單頁面">
+
+
+管理者-商品管理 
+
+  <img width=531.5px height=300px src="https://github.com/shccgxqp/WCoffeeFront/blob/main/picture/%E5%95%86%E5%93%81%E7%AE%A1%E7%90%86.jpeg?raw=true" alt="管理者/商品頁面">
